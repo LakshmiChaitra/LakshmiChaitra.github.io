@@ -386,9 +386,9 @@
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-tag">✦ Open to Internships</div>
+    
     <h1 class="hero-name">P. Lakshmi<br/><span>Chaitra</span></h1>
-    <p class="hero-sub">AI/ML Engineer & Mathematics and Computing Student building production-ready intelligent systems. B.Tech CSE student at CR Rao AIMSCS, Hyderabad.</p>
+    <p class="hero-sub">AI/ML Intern & Mathematics and Computing Student building production-ready intelligent systems. B.Tech CSE student at CR Rao AIMSCS, Hyderabad.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">View My Work</a>
       <a href="mailto:chaitracollege@gmail.com" class="btn-secondary">Get In Touch</a>
@@ -408,7 +408,7 @@
   </div>
   <div class="about-grid reveal">
     <div class="about-text">
-      <p>I am a <span>B.Tech Computer Science (Applied Mathematics)</span> student at CR Rao AIMSCS, Hyderabad — also pursuing advanced AI/ML coursework through <span>IIIT Hyderabad × iHub</span>.</p>
+      <p>I am a first-year <span>B.Tech Computer Science (Applied Mathematics)</span> student at CR Rao AIMSCS, Hyderabad — also pursuing advanced AI/ML coursework through <span>IIIT Hyderabad × iHub</span>.</p>
       <p>I build things end to end — from data pipelines to deployed web apps. My work spans <span>recommendation systems, NLP pipelines, ML dashboards,</span> and <span>LLM-backed tools</span>. I am not just studying AI; I am building with it.</p>
       <p>Certified across <span>IBM, Microsoft, and AWS</span> platforms, with hands-on internship and boot camp experience in Generative AI and prompt engineering. Always curious. Always building.</p>
     </div>
