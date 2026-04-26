@@ -1,10 +1,9 @@
-# LakshmiChaitra.github.io
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>P. Lakshmi Chaitra — AI / ML / AM Engineer</title>
+  <title>P. Lakshmi Chaitra — AI & ML Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -387,6 +386,7 @@
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="hero-content">
+    <div class="hero-tag">✦ Open to Internships</div>
     <h1 class="hero-name">P. Lakshmi<br/><span>Chaitra</span></h1>
     <p class="hero-sub">AI/ML Engineer & Mathematics and Computing Student building production-ready intelligent systems. B.Tech CSE student at CR Rao AIMSCS, Hyderabad.</p>
     <div class="hero-btns">
