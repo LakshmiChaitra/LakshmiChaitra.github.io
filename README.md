@@ -387,7 +387,6 @@
 <section id="hero">
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-tag">✦ Open to Internships</div>
     <h1 class="hero-name">P. Lakshmi<br/><span>Chaitra</span></h1>
     <p class="hero-sub">AI/ML Engineer & Mathematics and Computing Student building production-ready intelligent systems. B.Tech CSE student at CR Rao AIMSCS, Hyderabad.</p>
     <div class="hero-btns">
