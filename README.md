@@ -41,7 +41,7 @@ nav {
   padding:8rem 4rem;
 }
 
-/* 🔥 FIXED BIGGER */
+
 .hero-name {
   font-family:'Playfair Display', serif;
   font-size: clamp(3.5rem, 9vw, 7.5rem);
@@ -50,7 +50,7 @@ nav {
 }
 .hero-name span { color: var(--accent2); }
 
-/* 🔥 FIXED BIGGER */
+
 .hero-sub {
   font-size: clamp(1.2rem, 2.8vw, 1.6rem);
   color: var(--muted);
