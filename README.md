@@ -4,123 +4,136 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>P. Lakshmi Chaitra — AI & ML Engineer</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:#080C18;
+      --accent:#3B82F6;
+      --accent2:#60A5FA;
+      --text:#F1F5F9;
+      --muted:#94A3B8;
+      --border:rgba(59,130,246,0.18);
+      --card:rgba(13,18,36,0.85);
+    }
 
     body {
-      background: #080C18;
-      color: #F1F5F9;
+      background: var(--bg);
+      color: var(--text);
       font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
     }
 
     nav {
       position: fixed;
       width: 100%;
-      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
-      background: rgba(0,0,0,0.8);
+      padding: 1.2rem 4rem;
+      background: rgba(8,12,24,0.85);
     }
 
     .nav-logo {
-      font-weight: bold;
-      color: #60A5FA;
+      font-family: 'Playfair Display', serif;
+      color: var(--accent2);
+      font-weight: 700;
     }
 
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
       list-style: none;
     }
 
     .nav-links a {
-      color: #94A3B8;
+      color: var(--muted);
       text-decoration: none;
     }
 
     #hero {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 5rem 2rem;
+      padding: 8rem 4rem;
     }
 
+    /* ✔ Balanced, premium size */
     .hero-name {
-      font-size: 3rem;
       font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2rem, 7.5vw, 6.2rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.5px;
     }
 
-    .hero-name span {
-      color: #60A5FA;
-    }
+    .hero-name span { color: var(--accent2); }
 
     .hero-sub {
-      margin-top: 1rem;
-      color: #94A3B8;
+      font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+      color: var(--muted);
+      margin: 1.6rem 0 2.4rem;
+      line-height: 1.7;
     }
 
-    .btn {
-      margin-top: 2rem;
-      display: inline-block;
-      padding: 10px 20px;
-      background: #3B82F6;
+    .btn-primary {
+      background: var(--accent);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
       color: white;
       text-decoration: none;
-      border-radius: 6px;
     }
 
-    section {
-      padding: 4rem 2rem;
+    section { padding: 6rem 4rem; }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
     }
+
+    .about-text span { color: var(--accent2); }
+
   </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">Chaitra</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div>
     <h1 class="hero-name">P. Lakshmi<br><span>Chaitra</span></h1>
+
     <p class="hero-sub">
-      AI/ML Intern & Mathematics and Computing Student building intelligent systems.
+      AI/ML Intern & Mathematics and Computing Student building production-ready intelligent systems. B.Tech CSE student at CR Rao AIMSCS, Hyderabad.
     </p>
 
-    <a href="#projects" class="btn">View My Work</a>
+    <a href="#projects" class="btn-primary">View My Work</a>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
-  <h2>About</h2>
-  <p>
-    B.Tech CSE student at CR Rao AIMSCS, Hyderabad.
-    Passionate about AI, ML, and building real-world systems.
-  </p>
-</section>
+  <div class="about-text">
 
-<!-- PROJECTS -->
-<section id="projects">
-  <h2>Projects</h2>
-  <p>Project details go here...</p>
-</section>
+    <p>
+      I am a <span>B.Tech Computer Science (Applied Mathematics)</span> student at CR Rao AIMSCS, Hyderabad — also pursuing advanced AI/ML coursework through <span>IIIT Hyderabad × iHub</span>.
+    </p>
 
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: chaitracollege@gmail.com</p>
+    <p>
+      I build things end to end — from data pipelines to deployed web apps.
+    </p>
+
+  </div>
 </section>
 
 </body>
