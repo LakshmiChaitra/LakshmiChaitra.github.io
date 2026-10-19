@@ -369,3 +369,61 @@ html[data-theme=night] body#cc-cute { background: #2d2330; }
  html { scroll-behavior: auto; }
  #cc-cute *, #cc-cute *::before, #cc-cute *::after { animation: none !important; transition: none !important; }
 }
+/* Five petals, a card-coloured centre, and a sparkle-to-flower reveal. */
+html { color-scheme: dark; }
+#cc-cute .cc-club .cc-project:last-child { grid-column: auto; }
+#cc-cute .cc-flower-stage { position: relative; isolation: isolate; }
+#cc-cute .cc-flower-stage[data-flower-tone=mint] { --flower-center:var(--cc-mint); --flower-petal:var(--cc-lilac); }
+#cc-cute .cc-flower-stage[data-flower-tone=lilac] { --flower-center:var(--cc-lilac); --flower-petal:var(--cc-pink); }
+#cc-cute .cc-flower-stage[data-flower-tone=pink] { --flower-center:var(--cc-pink); --flower-petal:var(--cc-mint); }
+#cc-cute .cc-magic-flower { width:min(100%,730px); min-height:560px; padding-block:75px; }
+#cc-cute .cc-petal, #cc-cute .cc-petal:nth-child(2n), #cc-cute .cc-petal:nth-child(3n) {
+ left:calc(50% + var(--px)*25%); top:calc(50% + var(--py)*26%);
+ width:43%; height:47%; aspect-ratio:auto; border-radius:50%;
+ background:var(--flower-petal); border:1px solid color-mix(in srgb,var(--cc-purple) 30%,var(--flower-petal));
+ box-shadow:4px 6px 0 color-mix(in srgb,var(--flower-petal) 55%,transparent);
+}
+#cc-cute .cc-flower-heart { width:62%; aspect-ratio:1; min-height:0; border-radius:50%; padding:33px; gap:13px; background:var(--flower-center); color:var(--cc-ink); box-shadow:0 0 0 7px color-mix(in srgb,var(--flower-center) 65%,transparent); }
+#cc-cute .cc-flower-heart .cc-flower-face { color:var(--cc-purple); font-size:26px; }
+#cc-cute .cc-flower-heart h3 { font-size:30px; line-height:1.2; letter-spacing:-1px; }
+#cc-cute .cc-flower-heart p { font-size:14px; line-height:1.8; max-width:290px; }
+#cc-cute .cc-flower-heart .cc-flower-category { color:var(--cc-muted); font-size:10px; letter-spacing:.5px; }
+#cc-cute .cc-flower-tools span { background:color-mix(in srgb,var(--cc-paper) 62%,var(--flower-center)); color:var(--cc-ink); border:1px solid var(--cc-line); }
+#cc-cute .flower-controls { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:14px; padding:17px 0 9px; }
+#cc-cute .flower-controls button { background:var(--cc-paper); color:var(--cc-ink); padding:12px 17px; min-height:44px; border:1px dashed var(--cc-line); border-radius:24px; font-size:12px; }
+#cc-cute .flower-controls button:hover { border-color:var(--cc-purple); }
+#cc-cute .flower-controls button:disabled { opacity:0; }
+#cc-cute .flower-project-notes { width:min(100%,710px); margin:20px auto 0; padding:26px; border:1px solid var(--cc-line); border-radius:17px; background:var(--cc-paper); color:var(--cc-ink); }
+#cc-cute .flower-project-notes h4 { font-size:23px; line-height:1.35; margin:13px 0; letter-spacing:-.5px; }
+#cc-cute .flower-project-notes p, #cc-cute .flower-project-notes li { font-size:14px; line-height:1.9; color:var(--cc-muted); }
+#cc-cute .flower-project-notes ul { padding-left:20px; margin-block:18px; }
+#cc-cute .flower-project-notes li + li { margin-top:9px; }
+#cc-cute .flower-project-notes .flower-code { display:inline-block; color:var(--cc-purple); margin-top:18px; }
+#cc-cute .cc-forming .cc-petal, #cc-cute .cc-forming .cc-flower-heart { opacity:0; animation:none!important; }
+#cc-cute .flower-dust { position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:5; }
+#cc-cute .flower-dust-star { position:absolute; left:0; top:0; color:var(--cc-purple); text-shadow:0 0 9px var(--cc-purple),0 0 22px var(--cc-pink); line-height:1; }
+#cc-cute .flower-dust-star:nth-child(3n) { color:var(--cc-yellow); }
+#cc-cute .cc-blooming .cc-petal { animation:five-petal-bloom 550ms cubic-bezier(.17,.8,.3,1.1) both; animation-delay:var(--delay); }
+#cc-cute .cc-blooming .cc-flower-heart { animation:flower-centre-arrive 600ms cubic-bezier(.17,.8,.3,1.1) both; }
+@keyframes five-petal-bloom { from { opacity:0; transform:translate(calc(-50% - var(--px)*22px),calc(-50% - var(--py)*22px)) scale(.7); } to { opacity:1; transform:translate(-50%,-50%) scale(1); } }
+@keyframes flower-centre-arrive { from { opacity:0; transform:scale(.8); } to { opacity:1; transform:scale(1); } }
+@media(max-width:700px) {
+ #cc-cute .cc-magic-flower { min-height:390px; padding-block:65px; }
+ #cc-cute .cc-flower-heart { width:76%; min-height:0; padding:20px 16px; gap:9px; border-radius:50%; }
+ #cc-cute .cc-flower-heart h3 { font-size:23px; letter-spacing:-.8px; }
+ #cc-cute .cc-flower-heart p { font-size:12px; line-height:1.65; }
+ #cc-cute .cc-flower-heart .cc-flower-category { font-size:8px; line-height:1.6; }
+ #cc-cute .cc-flower-heart .cc-flower-face { font-size:20px; }
+ #cc-cute .cc-flower-heart > .cc-flower-tools { display:none; }
+ #cc-cute .cc-petal, #cc-cute .cc-petal:nth-child(2n), #cc-cute .cc-petal:nth-child(3n) { width:48%; height:45%; left:calc(50% + var(--px)*25%); top:calc(50% + var(--py)*24%); }
+ #cc-cute .flower-controls { gap:10px; }
+ #cc-cute .flower-controls button { font-size:11px; padding:11px 14px; }
+ #cc-cute .flower-project-notes { padding:22px 18px; }
+ #cc-cute .flower-project-notes h4 { font-size:21px; }
+ #cc-cute .flower-project-notes p, #cc-cute .flower-project-notes li { font-size:13px; }
+}
+@media(max-width:360px) {
+ #cc-cute .cc-flower-heart { width:79%; padding:18px 12px; gap:8px; }
+ #cc-cute .cc-flower-heart h3 { font-size:21px; }
+ #cc-cute .cc-flower-heart p { font-size:11px; }
+}

@@ -4,50 +4,133 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const projectGrid = document.querySelector('#projectGrid');
 const projectFlower = document.querySelector('#projectFlower');
 const projectCaption = document.querySelector('.project-caption');
-const shortNames = ['HUPP-LID','Quantum Decoder','PersonaLearn','Seamless Minds','DocChat & rag-api','SmartSpend','Academies & clinics'];
+const shortNames = ['HUPP-LID','Quantum Decoder','PersonaLearn','Seamless Minds','DocChat & rag-api','Academies & clinics'];
+const flowerLines = [
+ 'Finding every language in a mixed-script sentence.',
+ 'Learning to decode quantum error syndromes.',
+ 'Learning paths that grow with the learner.',
+ 'Speech, translated into new possibilities.',
+ 'Your PDFs, with a little more conversation.',
+ 'Handmade websites for real-world spaces.'
+];
 projectGrid.innerHTML = PROJECTS.map((project,index) => `<button type="button" class="cc-project" data-project="${index}" aria-label="Open ${esc(shortNames[index])} project flower"><span class="cc-small">${project.emoji} ${esc(project.label)}</span><h3>${esc(shortNames[index])}</h3><p>${esc(project.kind)}</p></button>`).join('');
 let opening = false;
 let lastProjectTrigger = null;
-let flowerAnimation = null;
+let bloomRun = 0;
+let settleBloom = null;
+const bloomAnimations = new Set();
+function cancelBloomAnimations() {
+ for (const animation of bloomAnimations) animation.cancel();
+ bloomAnimations.clear();
+ projectFlower.querySelector('.flower-dust')?.remove();
+}
+function bloomAnimate(element,keyframes,options) {
+ const animation=element.animate(keyframes,options);
+ bloomAnimations.add(animation);
+ animation.finished.then(()=>bloomAnimations.delete(animation),()=>bloomAnimations.delete(animation));
+ return animation;
+}
 function showProject(index, trigger) {
  if (opening) return;
  opening = true;
+ const run=++bloomRun;
  lastProjectTrigger = trigger;
  const project = PROJECTS[index];
- const coordinates = [[0,-1],[.707,-.707],[1,0],[.707,.707],[0,1],[-.707,.707],[-1,0],[-.707,-.707]];
- projectFlower.innerHTML = `<div class="cc-magic-flower">${coordinates.map(([x,y],i) => `<span class="cc-petal" aria-hidden="true" style="--px:${x};--py:${y};--delay:${i*45}ms"></span>`).join('')}<div class="cc-flower-heart"><span class="cc-flower-face" aria-hidden="true">✿</span><span class="cc-flower-category">${esc(project.label)}</span><h3>${esc(project.title)}</h3><p>${esc(project.kind)}</p><div class="cc-flower-tools">${project.tags.map(tag=>`<span>${esc(tag)}</span>`).join('')}</div><details class="flower-notes"><summary>Read the project notes</summary><ul>${project.points.map(point=>`<li>${esc(point)}</li>`).join('')}</ul></details>${project.code?`<a class="flower-code" href="${esc(project.code)}" target="_blank" rel="noopener noreferrer">View source code ↗</a>`:''}<button type="button" class="cc-flower-back">Back to the idea pile ↶</button></div></div>`;
- const reveal = () => {
-  opening = false;
-  projectGrid.hidden = true;
-  projectCaption.hidden = true;
-  projectFlower.hidden = false;
+ const source=projectGrid.querySelector(`[data-project="${index}"]`);
+ const sourceRect=source.getBoundingClientRect();
+ const areaRect=document.querySelector('.cc-project-area').getBoundingClientRect();
+ const sourceX=sourceRect.left+sourceRect.width/2-areaRect.left;
+ const sourceY=sourceRect.top+sourceRect.height/2-areaRect.top;
+ const tones=['mint','lilac','pink'];
+ projectFlower.dataset.flowerTone=tones[index%3];
+ const coordinates=Array.from({length:5},(_,i)=>{const angle=(-90+i*72)*Math.PI/180;return [Math.cos(angle),Math.sin(angle)];});
+ projectFlower.innerHTML = `<div class="cc-magic-flower">${coordinates.map(([x,y],i)=>`<span class="cc-petal" aria-hidden="true" style="--px:${x.toFixed(4)};--py:${y.toFixed(4)};--delay:${i*65}ms"></span>`).join('')}<div class="cc-flower-heart"><span class="cc-flower-face" aria-hidden="true">✿</span><span class="cc-flower-category">${esc(project.label)}</span><h3>${esc(shortNames[index])}</h3><p>${esc(flowerLines[index])}</p><div class="cc-flower-tools">${project.tags.map(tag=>`<span>${esc(tag)}</span>`).join('')}</div></div></div><div class="flower-controls"><button type="button" class="flower-notes-toggle" aria-expanded="false" aria-controls="flower-project-notes">Read the project notes ✧</button><button type="button" class="cc-flower-back">Back to the idea pile ↶</button></div><div class="flower-project-notes" id="flower-project-notes" hidden><span class="section-kicker">THE FULL STORY</span><h4>${esc(project.title)}</h4><p>${esc(project.kind)}</p><ul>${project.points.map(point=>`<li>${esc(point)}</li>`).join('')}</ul><div class="cc-flower-tools">${project.tags.map(tag=>`<span>${esc(tag)}</span>`).join('')}</div>${project.code?`<a class="flower-code" href="${esc(project.code)}" target="_blank" rel="noopener noreferrer">View source code ↗</a>`:''}</div><div class="flower-dust" aria-hidden="true"></div>`;
+ projectFlower.setAttribute('aria-busy','true');
+ projectFlower.classList.remove('cc-blooming');
+ projectFlower.classList.add('cc-forming');
+ const controls=projectFlower.querySelectorAll('button');
+ controls.forEach(button=>button.disabled=true);
+ let settled=false;
+ const finish=()=>{
+  if(settled||run!==bloomRun)return;
+  settled=true;
+  cancelBloomAnimations();
+  projectGrid.hidden=true;
+  projectCaption.hidden=true;
+  projectFlower.hidden=false;
+  projectFlower.classList.remove('cc-forming');
   projectFlower.classList.add('cc-blooming');
-  const back = projectFlower.querySelector('.cc-flower-back');
-  back.addEventListener('click',closeFlower);
-  back.focus({preventScroll:true});
-  projectFlower.scrollIntoView({block:'center',behavior:reduced.matches?'instant':'smooth'});
+  projectFlower.setAttribute('aria-busy','false');
+  controls.forEach(button=>button.disabled=false);
+  opening=false;
+  settleBloom=null;
+  projectFlower.querySelector('.cc-flower-back').focus({preventScroll:true});
  };
- projectFlower.hidden = true;
- if (reduced.matches || projectGrid.hidden) reveal();
- else {
-  flowerAnimation = projectGrid.animate([{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(.86) rotate(-2deg)'}],{duration:220,easing:'ease-in'});
-  flowerAnimation.onfinish = reveal;
- }
+ settleBloom=finish;
+ projectFlower.querySelector('.cc-flower-back').addEventListener('click',closeFlower);
+ const notesToggle=projectFlower.querySelector('.flower-notes-toggle');
+ notesToggle.addEventListener('click',()=>{
+  const notes=projectFlower.querySelector('.flower-project-notes');
+  notes.hidden=!notes.hidden;
+  notesToggle.setAttribute('aria-expanded',String(!notes.hidden));
+  notesToggle.textContent=notes.hidden?'Read the project notes ✧':'Fold the notes away ↟';
+ });
+ const beginGathering=()=>{
+  if(settled||run!==bloomRun)return;
+  projectGrid.hidden=true;
+  projectCaption.hidden=true;
+  projectFlower.hidden=false;
+  projectFlower.scrollIntoView({block:'start',behavior:'smooth'});
+  const layer=projectFlower.querySelector('.flower-dust');
+  const stageRect=projectFlower.getBoundingClientRect();
+  const width=stageRect.width;
+  const height=projectFlower.querySelector('.cc-magic-flower').offsetHeight;
+  const sx=Math.max(20,Math.min(width-20,sourceX));
+  const sy=Math.max(40,Math.min(height-40,sourceY));
+  const petals=[...projectFlower.querySelectorAll('.cc-petal')];
+  const animations=[];
+  for(let i=0;i<45;i++){
+   const petal=petals[i%5].getBoundingClientRect();
+   const phase=(i%9)/9*Math.PI*2;
+   const tx=petal.left-stageRect.left+petal.width/2+Math.cos(phase)*petal.width*.36;
+   const ty=petal.top-stageRect.top+petal.height/2+Math.sin(phase)*petal.height*.36;
+   const x=sx+(Math.random()-.5)*Math.min(sourceRect.width,160);
+   const y=sy+(Math.random()-.5)*70;
+   const angle=Math.random()*Math.PI*2;
+   const burstX=x+Math.cos(angle)*(50+Math.random()*80);
+   const burstY=y+Math.sin(angle)*(40+Math.random()*70);
+   const sparkle=document.createElement('span');
+   sparkle.className='flower-dust-star';
+   sparkle.textContent=i%3===0?'✳':'✦';
+   sparkle.style.fontSize=(10+Math.random()*12)+'px';
+   layer.append(sparkle);
+   animations.push(bloomAnimate(sparkle,[
+    {transform:`translate(${x}px,${y}px) scale(.2) rotate(0deg)`,opacity:0},
+    {offset:.2,transform:`translate(${burstX}px,${burstY}px) scale(1.25) rotate(35deg)`,opacity:1},
+    {offset:.62,transform:`translate(${tx+Math.cos(phase)*40}px,${ty+Math.sin(phase)*35}px) scale(.85) rotate(100deg)`,opacity:.95},
+    {transform:`translate(${tx}px,${ty}px) scale(.12) rotate(170deg)`,opacity:0}
+   ],{duration:1050,delay:(i%9)*20,easing:'cubic-bezier(.2,.6,.2,1)',fill:'both'}).finished);
+  }
+  Promise.allSettled(animations).then(finish);
+ };
+ if(reduced.matches||!sparkleEnabled){finish();return;}
+ bloomAnimate(projectGrid,[{opacity:1,filter:'brightness(1)',transform:'scale(1)'},{opacity:.6,filter:'brightness(1.8)',transform:'scale(1.015)'},{opacity:0,filter:'brightness(2.5)',transform:'scale(.96)'}],{duration:230,easing:'ease-in'}).finished.then(beginGathering,()=>{});
 }
 function closeFlower() {
- projectFlower.hidden = true;
- projectFlower.classList.remove('cc-blooming');
- projectGrid.hidden = false;
- projectCaption.hidden = false;
+ ++bloomRun;
+ opening=false;
+ settleBloom=null;
+ cancelBloomAnimations();
+ projectFlower.hidden=true;
+ projectFlower.classList.remove('cc-blooming','cc-forming');
+ projectGrid.hidden=false;
+ projectCaption.hidden=false;
  lastProjectTrigger?.focus({preventScroll:true});
  lastProjectTrigger?.scrollIntoView({block:'center',behavior:reduced.matches?'instant':'smooth'});
 }
-projectGrid.addEventListener('click',event => {
- const button=event.target.closest('[data-project]');
- if(button)showProject(Number(button.dataset.project),button);
-});
+projectGrid.addEventListener('click',event=>{const button=event.target.closest('[data-project]');if(button)showProject(Number(button.dataset.project),button);});
 document.querySelector('.cc-pick').addEventListener('click',event=>showProject(0,event.currentTarget));
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!projectFlower.hidden)closeFlower();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&(opening||!projectFlower.hidden))closeFlower();});
 
 document.querySelector('#experienceList').innerHTML=EXPERIENCE.map(e=>`<article class="timeline-item"><div class="time">${esc(e.when)}</div><div><h3>${esc(e.role)}</h3><div class="org">${esc(e.org)}</div><p>${esc(e.text)}</p></div></article>`).join('');
 document.querySelector('#skillGrid').innerHTML=SKILLS.map(g=>`<article class="skill-card ${g.wide?'wide':''}"><h3>${esc(g.group)}</h3><div class="skill-chips">${g.items.map((s,i)=>`<span class="skill-chip"><span aria-hidden="true">${['✳','✦','●','◆','⌘'][i%5]}</span>${esc(s)}</span>`).join('')}</div></article>`).join('');
@@ -56,8 +139,8 @@ document.querySelector('#certGrid').innerHTML=CERTS.map(c=>`<article class="cert
 document.querySelector('#educationGrid').innerHTML=EDUCATION.map(e=>`<article class="edu-card"><span class="edu-year">${esc(e.d)}</span><h3>${esc(e.t)}</h3><p>${esc(e.s)}</p></article>`).join('');
 
 const themeToggle = document.querySelector('#theme-toggle');
-let night = false;
-try { night=localStorage.getItem('chaitra-sticker-theme')==='night'; } catch {}
+let night = true;
+try { night=localStorage.getItem('chaitra-sticker-theme')!=='paper'; } catch {}
 function applyTheme() {
  document.documentElement.dataset.theme=night?'night':'paper';
  document.documentElement.style.colorScheme=night?'dark':'light';
@@ -91,8 +174,8 @@ function star(x,y,burst=false){
 }
 document.addEventListener('pointermove',event=>{if(!sparkleEnabled||reduced.matches||!fine.matches||event.pointerType!=='mouse')return;const t=performance.now();if(t-lastSpark<110)return;lastSpark=t;star(event.clientX,event.clientY);},{passive:true});
 document.addEventListener('pointerdown',event=>{if(!sparkleEnabled||reduced.matches||event.button!==0||event.target.closest('#sparkle-toggle'))return;for(let i=0;i<14;i++)star(event.clientX,event.clientY,true);},{passive:true});
-sparkleToggle.addEventListener('click',()=>{sparkleEnabled=!sparkleEnabled;renderSparks();try{localStorage.setItem('chaitra-sticker-sparkles',sparkleEnabled?'on':'off');}catch{}});
-reduced.addEventListener('change',()=>{renderSparks();if(reduced.matches&&opening&&flowerAnimation)flowerAnimation.finish();});
+sparkleToggle.addEventListener('click',()=>{sparkleEnabled=!sparkleEnabled;renderSparks();if(!sparkleEnabled&&opening)settleBloom?.();try{localStorage.setItem('chaitra-sticker-sparkles',sparkleEnabled?'on':'off');}catch{}});
+reduced.addEventListener('change',()=>{renderSparks();if(reduced.matches&&opening)settleBloom?.();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)clearSparks();});
 renderSparks();
 document.querySelector('#year').textContent=new Date().getFullYear();
