@@ -390,9 +390,10 @@ html { color-scheme: dark; }
 #cc-cute .cc-flower-heart .cc-flower-category { color:var(--cc-muted); font-size:10px; letter-spacing:.5px; }
 #cc-cute .cc-flower-tools span { background:color-mix(in srgb,var(--cc-paper) 62%,var(--flower-center)); color:var(--cc-ink); border:1px solid var(--cc-line); }
 #cc-cute .flower-controls { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:14px; padding:17px 0 9px; }
-#cc-cute .flower-controls button { background:var(--cc-paper); color:var(--cc-ink); padding:12px 17px; min-height:44px; border:1px dashed var(--cc-line); border-radius:24px; font-size:12px; }
-#cc-cute .flower-controls button:hover { border-color:var(--cc-purple); }
+#cc-cute .flower-controls button, #cc-cute .flower-controls .flower-live { background:var(--cc-paper); color:var(--cc-ink); padding:12px 17px; min-height:44px; border:1px dashed var(--cc-line); border-radius:24px; font-size:12px; }
+#cc-cute .flower-controls button:hover, #cc-cute .flower-controls .flower-live:hover { border-color:var(--cc-purple); }
 #cc-cute .flower-controls button:disabled { opacity:0; }
+#cc-cute .flower-controls .flower-live { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; font-weight:700; border-style:solid; border-color:var(--cc-purple); }
 #cc-cute .flower-project-notes { width:min(100%,710px); margin:20px auto 0; padding:26px; border:1px solid var(--cc-line); border-radius:17px; background:var(--cc-paper); color:var(--cc-ink); }
 #cc-cute .flower-project-notes h4 { font-size:23px; line-height:1.35; margin:13px 0; letter-spacing:-.5px; }
 #cc-cute .flower-project-notes p, #cc-cute .flower-project-notes li { font-size:14px; line-height:1.9; color:var(--cc-muted); }
@@ -417,7 +418,7 @@ html { color-scheme: dark; }
  #cc-cute .cc-flower-heart > .cc-flower-tools { display:none; }
  #cc-cute .cc-petal, #cc-cute .cc-petal:nth-child(2n), #cc-cute .cc-petal:nth-child(3n) { width:48%; height:45%; left:calc(50% + var(--px)*25%); top:calc(50% + var(--py)*24%); }
  #cc-cute .flower-controls { gap:10px; }
- #cc-cute .flower-controls button { font-size:11px; padding:11px 14px; }
+ #cc-cute .flower-controls button, #cc-cute .flower-controls .flower-live { font-size:11px; padding:11px 14px; }
  #cc-cute .flower-project-notes { padding:22px 18px; }
  #cc-cute .flower-project-notes h4 { font-size:21px; }
  #cc-cute .flower-project-notes p, #cc-cute .flower-project-notes li { font-size:13px; }
