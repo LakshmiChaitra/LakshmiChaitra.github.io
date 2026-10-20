@@ -4,14 +4,14 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const projectGrid = document.querySelector('#projectGrid');
 const projectFlower = document.querySelector('#projectFlower');
 const projectCaption = document.querySelector('.project-caption');
-const shortNames = ['HUPP-LID','Quantum Decoder','PersonaLearn','Seamless Minds','DoChat','Midnight Castle'];
+const shortNames = ['HUPP-LID','Quantum Decoder','PersonaLearn','Seamless Minds','DoChat','Web Development'];
 const flowerLines = [
  'Finding every language in a mixed-script sentence.',
  'Learning to decode quantum error syndromes.',
  'Learning paths that grow with the learner.',
  'Speech, translated into new possibilities.',
  'Your PDFs, with a little more conversation.',
- 'Four moonlit realms. A little adventure after dark.'
+ 'Websites for academies & clinics. A game after dark.'
 ];
 projectGrid.innerHTML = PROJECTS.map((project,index) => `<button type="button" class="cc-project" data-project="${index}" aria-label="Open ${esc(shortNames[index])} project flower"><span class="cc-small">${project.emoji} ${esc(project.label)}</span><h3>${esc(shortNames[index])}</h3><p>${esc(project.kind)}</p></button>`).join('');
 let lastProjectTrigger = null;
@@ -21,7 +21,7 @@ function showProject(index, trigger) {
  const tones=['mint','lilac','pink'];
  projectFlower.dataset.flowerTone=tones[index%3];
  const coordinates=Array.from({length:5},(_,i)=>{const angle=(-90+i*72)*Math.PI/180;return [Math.cos(angle),Math.sin(angle)];});
- projectFlower.innerHTML = `<div class="cc-magic-flower">${coordinates.map(([x,y],i)=>`<span class="cc-petal" aria-hidden="true" style="--px:${x.toFixed(4)};--py:${y.toFixed(4)};--delay:${i*65}ms"></span>`).join('')}<div class="cc-flower-heart"><span class="cc-flower-face" aria-hidden="true">✿</span><span class="cc-flower-category">${esc(project.label)}</span><h3>${esc(shortNames[index])}</h3><p>${esc(flowerLines[index])}</p><div class="cc-flower-tools">${project.tags.map(tag=>`<span>${esc(tag)}</span>`).join('')}</div></div></div><div class="flower-controls">${project.live?`<a class="flower-live" href="${esc(project.live)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${esc(shortNames[index])} live project">Open live project ↗</a>`:''}<button type="button" class="flower-notes-toggle" aria-expanded="false" aria-controls="flower-project-notes">Read the project notes ✧</button><button type="button" class="cc-flower-back">Back to the idea pile ↶</button></div><div class="flower-project-notes" id="flower-project-notes" hidden><span class="section-kicker">THE FULL STORY</span><h4>${esc(project.title)}</h4><p>${esc(project.kind)}</p><ul>${project.points.map(point=>`<li>${esc(point)}</li>`).join('')}</ul><div class="cc-flower-tools">${project.tags.map(tag=>`<span>${esc(tag)}</span>`).join('')}</div>${project.code?`<a class="flower-code" href="${esc(project.code)}" target="_blank" rel="noopener noreferrer">View source code ↗</a>`:''}</div>`;
+ projectFlower.innerHTML = `<div class="cc-magic-flower">${coordinates.map(([x,y],i)=>`<span class="cc-petal" aria-hidden="true" style="--px:${x.toFixed(4)};--py:${y.toFixed(4)};--delay:${i*65}ms"></span>`).join('')}<div class="cc-flower-heart"><span class="cc-flower-face" aria-hidden="true">✿</span><span class="cc-flower-category">${esc(project.label)}</span><h3>${esc(shortNames[index])}</h3><p>${esc(flowerLines[index])}</p><div class="cc-flower-tools">${project.tags.map(tag=>`<span>${esc(tag)}</span>`).join('')}</div></div></div><div class="flower-controls">${project.live?`<a class="flower-live" href="${esc(project.live)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${esc(shortNames[index])} live project">${esc(project.liveLabel||'Open live project')} ↗</a>`:''}<button type="button" class="flower-notes-toggle" aria-expanded="false" aria-controls="flower-project-notes">Read the project notes ✧</button><button type="button" class="cc-flower-back">Back to the idea pile ↶</button></div><div class="flower-project-notes" id="flower-project-notes" hidden><span class="section-kicker">THE FULL STORY</span><h4>${esc(project.title)}</h4><p>${esc(project.kind)}</p><ul>${project.points.map(point=>`<li>${esc(point)}</li>`).join('')}</ul><div class="cc-flower-tools">${project.tags.map(tag=>`<span>${esc(tag)}</span>`).join('')}</div>${project.code?`<a class="flower-code" href="${esc(project.code)}" target="_blank" rel="noopener noreferrer">View source code ↗</a>`:''}</div>`;
  projectGrid.hidden=true;
  projectCaption.hidden=true;
  projectFlower.hidden=false;
