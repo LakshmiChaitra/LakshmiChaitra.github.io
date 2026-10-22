@@ -10,7 +10,7 @@ There is no build step. GitHub Pages can publish the repository root directly.
 
 ## Content
 
-`content.js` preserves the original site’s remaining six projects, two experience entries, six focused skill groups, five training programs, eight certificates and two education records. The original resume remains at `Lakshmi_Chaitra_Resume.pdf`. SmartSpend was removed at the owner’s request. No new claims, credential links or dates have been invented. The script playground identifies Unicode writing systems; it is not a language identification model.
+`content.js` preserves the original site’s remaining six projects, two experience entries, seven skill groups, five training programs, eight certificates and two education records. The original resume remains at `Lakshmi_Chaitra_Resume.pdf`. SmartSpend was removed at the owner’s request. No new claims, credential links or dates have been invented. The script playground identifies Unicode writing systems; it is not a language identification model.
 
 Dark is the default theme; visitors can switch to pastel paper and their explicit preference is remembered.
 
