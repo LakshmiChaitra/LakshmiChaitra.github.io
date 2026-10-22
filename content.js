@@ -13,13 +13,12 @@ const EXPERIENCE=[
 {role:"Data Analyst Intern",org:"Seaweedz Energy Private Limited",when:"Jul 2026 – Present",text:"Working with SQL and Python on data analysis."}
 ];
 const SKILLS=[
-{group:"Languages",items:["Python","JavaScript","React.js","Node.js","SQL","HTML/CSS","TypeScript","Java","Dart","R","C","Ruby"]},
-{group:"AI & machine learning",items:["NLP","LLMs","Generative AI","Deep Learning","Computer Vision","Prompt Engineering","Transformers","Machine Learning","RAG","BiLSTM / Seq Models","Speech Recognition (Whisper)","Browser ML Inference","Model Evaluation"]},
-{group:"Frameworks & tools",items:["Flask","Streamlit","Scikit-learn","XGBoost","Pandas","NumPy","Matplotlib","OpenAI GPT","IBM Watson","AWS","Azure ML","PyTorch","FAISS","SQLite","Stim","Claude API","Three.js","PDF.js","Transformers.js","ONNX Runtime"]},
-{group:"Data science",items:["Collaborative Filtering","K-Means","TF-IDF","Cosine Similarity","Predictive Modeling","Statistical Analysis","Recommendation Systems","Information Retrieval (BM25)","Document Chunking"]},
-{group:"Web & app development",items:["Responsive Design","Next.js","Tailwind CSS","REST APIs","FastAPI","Flutter","GitHub Pages","Vercel","Render","IndexedDB","Web Workers","Web Audio API","WebAssembly"]},
-{group:"Core CS & tools",items:["Data Structures and Algorithms","DBMS","Operating Systems","Linux","Git","GitHub","Docker (basics)"]},
-{group:"Creative & content",wide:true,items:["UI design","Figma","Canva","Google Flow","Veo","AI video generation","UGC ad prompts","YouTube"]}
+{group:"Languages",items:["Python","SQL","JavaScript","HTML/CSS"]},
+{group:"AI & machine learning",items:["Machine Learning","Deep Learning","Natural Language Processing","Computer Vision","Transformers & LLMs","Generative AI & RAG","Recommendation Systems","Model Evaluation"]},
+{group:"Data analysis & retrieval",items:["NumPy","Pandas","Matplotlib","Statistical Analysis","Clustering (K-Means)","Information Retrieval (TF-IDF, BM25)"]},
+{group:"ML frameworks & tools",items:["PyTorch","Scikit-learn","XGBoost","FAISS","ONNX Runtime","OpenAI & Claude APIs"]},
+{group:"APIs & deployment",items:["FastAPI","Streamlit","REST APIs","Browser ML Inference","Docker (basics)","AWS & Azure ML"]},
+{group:"Core CS & development",items:["Data Structures & Algorithms","Database Fundamentals","Operating Systems","Linux","Git & GitHub"]}
 ];
 const TRAINING=[
 {n:"AI and Machine Learning Training Program",o:"iHub-Data, IIIT Hyderabad",d:"Feb – Aug 2026",t:"24-week program in artificial intelligence and machine learning."},
