@@ -13,7 +13,8 @@ const flowerLines = [
  'Your PDFs, with a little more conversation.',
  'Websites for academies & clinics. A game after dark.'
 ];
-projectGrid.innerHTML = PROJECTS.map((project,index) => `<button type="button" class="cc-project" data-project="${index}" aria-label="Open ${esc(shortNames[index])} project flower"><span class="cc-small"><span class="project-emoji" aria-hidden="true">${project.emoji}</span> ${esc(project.label)}</span><h3>${esc(shortNames[index])}</h3><p>${esc(project.kind)}</p></button>`).join('');
+const projectPreviews=['hupp.svg','quantum.png','persona.png','speech.png','dochat.png','castle.png'];
+projectGrid.innerHTML = PROJECTS.map((project,index) => `<button type="button" class="cc-project" data-project="${index}" aria-label="Open ${esc(shortNames[index])} project flower"><span class="project-visual" aria-hidden="true"><span class="preview-topline"><span>${String(index+1).padStart(2,'0')} / ${index===0?'RESEARCH OVERVIEW':'PROJECT PREVIEW'}</span><span>↗</span></span><img src="assets/project-previews/${projectPreviews[index]}" alt="" loading="lazy" width="1200" height="720"><span class="preview-open">Explore project ↗</span></span><span class="cc-small"><span class="project-emoji" aria-hidden="true">${project.emoji}</span> ${esc(project.label)}</span><h3>${esc(shortNames[index])}</h3><p>${esc(project.kind)}</p></button>`).join('');
 let lastProjectTrigger = null;
 let activeProjectIndex = null;
 function showProject(index, trigger, preservePosition = false) {
@@ -50,7 +51,7 @@ function closeFlower() {
 }
 projectGrid.addEventListener('click',event=>{const button=event.target.closest('[data-project]');if(button)showProject(Number(button.dataset.project),button);});
 document.querySelector('.cc-pick').addEventListener('click',event=>showProject(0,event.currentTarget));
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!projectFlower.hidden)closeFlower();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!projectFlower.hidden&&!projectsDialog.open)closeFlower();});
 
 document.querySelector('#experienceList').innerHTML=EXPERIENCE.map(e=>`<article class="timeline-item"><div class="time">${esc(e.when)}</div><div><h3>${esc(e.role)}</h3><div class="org">${esc(e.org)}</div><p>${esc(e.text)}</p></div></article>`).join('');
 document.querySelector('#skillGrid').innerHTML=SKILLS.map(g=>`<article class="skill-card ${g.wide?'wide':''}"><h3>${esc(g.group)}</h3><div class="skill-chips">${g.items.map((s,i)=>`<span class="skill-chip"><span aria-hidden="true">${['✳','✦','●','◆','⌘'][i%5]}</span>${esc(s)}</span>`).join('')}</div></article>`).join('');
@@ -70,21 +71,21 @@ let night = document.documentElement.dataset.theme === 'night';
 let effectsReady = false;
 const modeCopy = [
  ['.cc-brand','P. Lakshmi Chaitra'],
- ['.cc-intro-tag','AI / ML · NLP · SOFTWARE ENGINEERING'],
- ['#hero-title','P. Lakshmi Chaitra.<br><span class="cc-name">AI/ML &amp; software.</span>'],
- ['.cc-intro','CSE (Applied Mathematics) student building practical machine learning, language technology and software.<br>Open to AI/ML and software engineering internships.'],
- ['.cc-actions .cc-button','Explore selected work <span>↗</span>'],
- ['.cc-browser-top span','PORTFOLIO / SELECTED PROJECTS'],
- ['#projects-title','Selected projects.'],
+ ['.cc-intro-tag','Hey there ✦'],
+ ['.cc-club-sticker.left','open to<br>internships'],
+ ['.cc-club-sticker.right','thoughtfully<br>built ✦'],
+ ['.cc-club-sticker.lower','curiosity → creation'],
+ ['#hero-title','Curious about AI.<br><span class="cc-name">Serious about building.</span>'],
+ ['.cc-intro','I’m Chaitra, a computer science student working across language technology, machine learning and web development.<br>Exploring ideas through research. Bringing them to life through code.'],
+ ['.cc-actions .cc-button','Explore my projects <span>↗</span>'],
+ ['.project-window-title','PORTFOLIO / MY PROJECTS'],
+ ['#projects-title','My projects.'],
  ['.project-caption','Research and engineering projects across language technology, machine learning and web development.'],
  ['#about .section-kicker','02 / ABOUT'],
  ['#about h2','Research-minded.<br>Engineering-focused.'],
  ['#about .section-head > p','Computer science, applied mathematics and a focus on building practical tools.'],
  ['.about-label h3','AI/ML &amp;<br>software development.'],
  ['.mini-stats','<span class="mini-stat">Language technology</span><span class="mini-stat">Applied research</span><span class="mini-stat">Software engineering</span>'],
- ['#script-lab .section-kicker','INTERACTIVE DEMONSTRATION'],
- ['#script-lab h2','Writing-system detection.'],
- ['#script-lab .pill','HUPP-LID · Unicode script demonstration'],
  ['#experience .section-kicker','03 / EXPERIENCE'],
  ['#skills .section-kicker','04 / TECHNICAL SKILLS'],
  ['#certifications .section-kicker','05 / TRAINING & CREDENTIALS'],
@@ -99,11 +100,11 @@ const modeCopy = [
 function applyTheme() {
  document.documentElement.dataset.theme=night?'night':'paper';
  document.documentElement.style.colorScheme=night?'dark':'light';
- document.querySelector('meta[name="theme-color"]').content=night?'#0e1522':'#fff3eb';
- themeToggle.textContent=night?'Pastel ✿':'Professional ↗';
+ document.querySelector('meta[name="theme-color"]').content=night?'#102b3a':'#fff3eb';
+ themeToggle.textContent=night?'Casual ✿':'Professional ↗';
  themeToggle.setAttribute('aria-pressed',String(night));
- themeToggle.setAttribute('aria-label',night?'Switch to pastel mode':'Switch to professional mode');
- themeToggle.title=night?'Switch to pastel mode':'Switch to professional mode';
+ themeToggle.setAttribute('aria-label',night?'Switch to casual pastel mode':'Switch to professional mode');
+ themeToggle.title=night?'Switch to casual pastel mode':'Switch to professional mode';
  modeCopy.forEach(copy=>{copy.element.innerHTML=night?copy.professional:copy.paper;});
  projectGrid.querySelectorAll('[data-project]').forEach(button=>{const index=Number(button.dataset.project);button.setAttribute('aria-label',night?`Read ${shortNames[index]} case study`:`Open ${shortNames[index]} project flower`);});
  if(activeProjectIndex!==null&&!projectFlower.hidden)showProject(activeProjectIndex,lastProjectTrigger,true);
@@ -113,7 +114,7 @@ applyTheme();
 themeToggle.addEventListener('click',()=>{night=!night;applyTheme();try{localStorage.setItem('chaitra-portfolio-mode-v2',night?'professional':'pastel');}catch{}});
 let surpriseIndex=0;
 document.querySelector('.cc-surprise').addEventListener('click',event=>{
- const notes=['certified<br>“what if?” person','brb, making<br>a tiny thing ✿','one more idea.<br>then sleep. ☾','curiosity<br>club ✦'];
+ const notes=night?['research<br>in progress ✦','always<br>learning ↗','ideas into<br>practice ✧','thoughtfully<br>built ✦']:['certified<br>“what if?” person','brb, making<br>a tiny thing ✿','one more idea.<br>then sleep. ☾','curiosity<br>club ✦'];
  event.currentTarget.innerHTML=notes[surpriseIndex++%notes.length];
 });
 
@@ -143,7 +144,47 @@ document.querySelector('#year').textContent=new Date().getFullYear();
 // Scroll reveals enhance otherwise visible content.
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.06});
 document.querySelectorAll('.reveal').forEach(element=>observer.observe(element));
-// Script demo: identifies Unicode script only; it does not identify the language.
-(()=>{const input=document.querySelector("#scriptIn"),out=document.querySelector("#scriptOut"),btn=document.querySelector("#scriptEx");const scripts=[["Devanagari",/[\u0900-\u097F]/g,"#ffe0e9"],["Gurmukhi",/[\u0A00-\u0A7F]/g,"#d9f6e8"],["Telugu",/[\u0C00-\u0C7F]/g,"#e4dcff"],["Perso-Arabic",/[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/g,"#d9efff"],["Latin",/[A-Za-z\u00C0-\u024F]/g,"#fff0bd"]];const examples=["Hello नमस्ते ਸਤ ਸ੍ਰੀ ਅਕਾਲ سلام నమస్తే","kal meeting के बाद call करना","Chai తాగుదామా ਚਲੋ چلو","I love Hyderabad హైదరాబాద్ हैदराबاد"];let n=0;function render(){out.replaceChildren();const words=input.value.trim().split(/\s+/).filter(Boolean).slice(0,30);if(!words.length){out.textContent="Your word tags will show up here.";return}words.forEach(w=>{let match=null,best=0;scripts.forEach(s=>{const count=(w.match(s[1])||[]).length;if(count>best){best=count;match=s}});const card=document.createElement("span");card.style.cssText=`display:inline-flex;flex-direction:column;gap:3px;padding:8px 10px;border:1.5px solid var(--ink);border-radius:11px;background:${match?match[2]:"#fff"}`;const word=document.createElement("b");word.textContent=w;word.dir="auto";const label=document.createElement("small");label.textContent=match?match[0]:"Other";label.style.cssText="font-size:.68rem;font-weight:700;color:#554c65";card.append(word,label);out.append(card)})}input.addEventListener("input",render);btn.addEventListener("click",()=>{n=(n+1)%examples.length;input.value=examples[n];render()});render()})();
 // Contact form retains the mailto fallback. Add a Web3Forms key in CONFIG to enable direct delivery.
 document.querySelector("#contactForm").addEventListener("submit",async ev=>{ev.preventDefault();const form=ev.currentTarget,status=document.querySelector("#formStatus"),data=Object.fromEntries(new FormData(form).entries());if(!data.name||!data.email||!data.message){status.textContent="Please fill in all three fields.";return}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){status.textContent="Please enter a valid email address.";return}if(data.botcheck){status.textContent="";return}if(!CONFIG.web3formsKey||CONFIG.web3formsKey.startsWith("YOUR_")){const subject=encodeURIComponent("Portfolio message from "+data.name);const body=encodeURIComponent(data.message+"\n\nFrom: "+data.name+" ("+data.email+")");status.textContent="Opening your email app…";window.location.href="mailto:"+CONFIG.email+"?subject="+subject+"&body="+body;return}const button=form.querySelector("button");button.disabled=true;status.textContent="Sending…";try{const res=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({access_key:CONFIG.web3formsKey,subject:"New message from your portfolio",from_name:"Portfolio contact form",name:data.name,email:data.email,message:data.message,botcheck:data.botcheck?true:false})});const result=await res.json();if(result.success){form.reset();status.textContent="Message sent — thank you! 💌"}else status.textContent="Could not send. Please email "+CONFIG.email+" instead."}catch(e){status.textContent="Could not send. Please email "+CONFIG.email+" instead."}button.disabled=false});
+
+// A native dialog provides keyboard focus trapping and Escape-to-restore.
+const projectsDialog=document.querySelector('#projects-dialog');
+const projectBrowser=document.querySelector('.cc-browser');
+const maximizeProjects=document.querySelector('.window-expand');
+const restoreProjects=document.querySelector('.project-restore');
+const browserSlot=document.createComment('Projects window position');
+projectBrowser.before(browserSlot);
+let projectsScroll=0;
+let returnToPlayground=false;
+maximizeProjects.addEventListener('click',()=>{
+ if(projectsDialog.open){projectsDialog.close();return;}
+ projectsScroll=window.scrollY;
+ projectsDialog.append(projectBrowser);
+ restoreProjects.hidden=false;
+ maximizeProjects.setAttribute('aria-label','Restore projects window');maximizeProjects.title='Restore projects window';
+ maximizeProjects.setAttribute('aria-expanded','true');
+ projectsDialog.showModal();document.body.classList.add('projects-focused');
+ projectsDialog.scrollTop=0;restoreProjects.focus({preventScroll:true});
+});
+restoreProjects.addEventListener('click',()=>projectsDialog.close());
+projectsDialog.addEventListener('close',()=>{
+ browserSlot.after(projectBrowser);
+ restoreProjects.hidden=true;
+ maximizeProjects.setAttribute('aria-label','Expand projects');maximizeProjects.title='Expand projects';
+ maximizeProjects.setAttribute('aria-expanded','false');
+ document.body.classList.remove('projects-focused');
+ window.scrollTo({top:projectsScroll,behavior:'instant'});
+ maximizeProjects.focus({preventScroll:true});
+ if(returnToPlayground){returnToPlayground=false;document.querySelector('#top').scrollIntoView({behavior:'instant'});document.querySelector('.cc-brand').focus({preventScroll:true});}
+});
+
+document.querySelector('.window-pile').addEventListener('click',()=>{
+ if(!projectFlower.hidden)closeFlower();
+ if(projectsDialog.open)projectsDialog.close();
+ else document.querySelector('#projects').scrollIntoView({behavior:reduced.matches?'instant':'smooth'});
+});
+document.querySelector('.window-close').addEventListener('click',()=>{
+ if(!projectFlower.hidden)closeFlower();
+ if(projectsDialog.open){returnToPlayground=true;projectsDialog.close();}
+ else{document.querySelector('#top').scrollIntoView({behavior:reduced.matches?'instant':'smooth'});document.querySelector('.cc-brand').focus({preventScroll:true});}
+});

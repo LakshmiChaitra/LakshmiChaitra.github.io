@@ -1,0 +1,74 @@
+/* Ocean studio: expressive professional mode. Casual remains unchanged. */
+#cc-cute .project-visual{display:none}
+html[data-theme=night] body#cc-cute{background:#081e2a}
+html[data-theme=night] #cc-cute .cc-page{--cc-bg:#081e2a;--cc-paper:#102d3c;--cc-ink:#f6f1e7;--cc-muted:#a8c2ce;--cc-purple:#75ded5;--cc-line:#345363;background:radial-gradient(ellipse 70% 650px at 50% 160px,#174e633d,transparent),#081e2a;background-size:auto}
+html[data-theme=night] #cc-cute .cc-nav{min-height:100px;border-color:#89bfce26}
+html[data-theme=night] #cc-cute .cc-brand{font-weight:500;letter-spacing:-.6px;color:#f6f1e7}
+html[data-theme=night] #cc-cute .cc-nav nav a{color:#abc3ce}
+html[data-theme=night] #cc-cute .cc-nav nav a:hover{color:#75ded5}
+html[data-theme=night] #cc-cute .cc-nav .cc-theme{border-color:#638b9966;background:#2246558c;color:#e5efed;backdrop-filter:blur(10px)}
+html[data-theme=night] #cc-cute .cc-club .cc-hero{min-height:640px;padding:66px 20px 70px;isolation:isolate;background:transparent}
+html[data-theme=night] #cc-cute .cc-hero:before{content:'';position:absolute;width:680px;height:680px;border:1px solid #75ded512;border-radius:50%;left:50%;top:44%;transform:translate(-50%,-50%);z-index:-1;pointer-events:none;box-shadow:0 0 0 72px #75ded504,0 0 0 73px #75ded50a,0 0 0 143px #75ded503,0 0 0 144px #75ded508}
+html[data-theme=night] #cc-cute .cc-intro-tag{background:#244b555e;border:1px solid #64969e66;color:#cfebe8;padding:8px 23px;font:500 23px/1.2 Caveat,cursive;box-shadow:0 5px 22px #0002}
+html[data-theme=night] #cc-cute .cc-club h1{font-size:clamp(45px,5.5vw,77px);line-height:1.05;letter-spacing:-3.6px;font-weight:500;margin:29px auto 27px;color:#f6f1e7}
+html[data-theme=night] #cc-cute .cc-club .cc-name{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;font-size:1.27em;letter-spacing:-3px;line-height:1.2;color:#86ddd5;display:inline-block}
+html[data-theme=night] #cc-cute .cc-club .cc-name:after{height:9px;bottom:1px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='9' viewBox='0 0 600 9'%3E%3Cpath d='M1 7Q280 -3 599 6' stroke='%2375ded5' stroke-opacity='.4' fill='none' stroke-width='1.5'/%3E%3C/svg%3E") center/100% 100%;transform:none}
+html[data-theme=night] #cc-cute .cc-club .cc-intro{background:transparent;font-size:14px;line-height:1.95;max-width:590px;color:#adc4cd}
+html[data-theme=night] #cc-cute .cc-club .cc-actions{margin-top:32px;gap:28px}
+html[data-theme=night] #cc-cute .cc-club .cc-button{background:#93e0d7;color:#123b40;border-color:#93e0d7;border-radius:30px;padding:16px 25px;box-shadow:0 0 28px #75ded51c;font-size:12px;transition:transform .25s,box-shadow .25s}
+html[data-theme=night] #cc-cute .cc-club .cc-button:hover{transform:translateY(-3px);box-shadow:0 8px 30px #75ded52e}
+html[data-theme=night] #cc-cute .professional-resume{font-size:12px;color:#e1e8e7;border-color:#69818b}
+html[data-theme=night] #cc-cute .cc-club-sticker{background:#153e48!important;border-color:#6b9b9f5c;box-shadow:4px 7px 20px #0002;color:#c5e4dc}
+html[data-theme=night] #cc-cute .cc-club-sticker.left{top:180px;left:1%;width:94px;height:91px;transform:rotate(-13deg);animation:ocean-float 7s ease-in-out infinite}
+html[data-theme=night] #cc-cute .cc-club-sticker.right{background:#234156!important;border-color:#7596b361;color:#d5e5ee;top:140px;right:0;width:90px;height:90px;animation:ocean-float 8s ease-in-out -3s infinite}
+html[data-theme=night] #cc-cute .cc-club-sticker.lower{background:#173b49!important;right:3%;bottom:35px;border-color:#61889870;color:#b7d8df;font-size:17px;box-shadow:3px 6px 15px #0003}
+html[data-theme=night] #cc-cute .cc-divider{border-block:1px solid #89bfce26;padding-block:19px;font-size:9px;letter-spacing:1px;color:#8aaab8}
+html[data-theme=night] #cc-cute .site-projects{padding-top:58px}
+html[data-theme=night] #cc-cute .cc-browser{background:#0e2836;border:1px solid #3e657780;border-radius:19px;box-shadow:0 24px 65px #0003,0 0 50px #4699b508}
+html[data-theme=night] #cc-cute .cc-browser-top{background:#173746e6;color:#99bac9;border-color:#3b6375a6;min-height:57px;padding:12px 19px}
+html[data-theme=night] #cc-cute .cc-club .cc-project-area{padding:36px}
+html[data-theme=night] #cc-cute .cc-section-heading{margin-bottom:30px;align-items:end}
+html[data-theme=night] #cc-cute .cc-section-heading h2{font-family:'Instrument Serif',Georgia,serif;font-size:52px;font-weight:400;letter-spacing:-1.2px;color:#f6f1e7}
+html[data-theme=night] #cc-cute .section-kicker{font-size:9px;letter-spacing:1.7px;color:#81b9bf}
+html[data-theme=night] #cc-cute .cc-projects{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+html[data-theme=night] #cc-cute .cc-club .cc-project:nth-child(n){background:linear-gradient(145deg,#173c4a,#112d3c);border:1px solid #386175;border-radius:16px;box-shadow:none;transform:none;padding:17px 17px 24px;min-height:0;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;color:#f5efe3}
+html[data-theme=night] #cc-cute .cc-club .cc-project:nth-child(3n+2){background:linear-gradient(145deg,#19394d,#132d40);border-color:#3a5b74}
+html[data-theme=night] #cc-cute .cc-club .cc-project:nth-child(3n){background:linear-gradient(145deg,#1d414c,#14313b);border-color:#3a6671}
+html[data-theme=night] #cc-cute .cc-club .cc-project:hover{transform:translateY(-6px);border-color:#8ad7d5;box-shadow:0 15px 30px #0003}
+html[data-theme=night] #cc-cute .cc-project:after{display:none}
+html[data-theme=night] #cc-cute .project-visual{display:block;position:relative;overflow:hidden;border:1px solid #9bc4d22b;border-radius:9px;background:#081e2a;margin-bottom:24px;aspect-ratio:1.64}
+html[data-theme=night] #cc-cute .preview-topline{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#0e2634;color:#92b3c4;font:8px/1.3 'Space Mono',monospace;letter-spacing:1px;position:relative;z-index:1}
+html[data-theme=night] #cc-cute .project-visual img{width:100%;height:calc(100% - 29px);object-fit:cover;object-position:top;display:block;transition:transform .65s cubic-bezier(.2,.7,.3,1),filter .45s;filter:saturate(.8);transform-origin:top}
+html[data-theme=night] #cc-cute .cc-project:hover .project-visual img{transform:scale(1.045);filter:saturate(1)}
+html[data-theme=night] #cc-cute .preview-open{position:absolute;bottom:14px;left:50%;transform:translate(-50%,10px);background:#102c3feF;border:1px solid #78d3d2;border-radius:30px;backdrop-filter:blur(8px);padding:10px 16px;color:#e9f5f2;font-size:10px;white-space:nowrap;opacity:0;transition:opacity .25s,transform .25s}
+html[data-theme=night] #cc-cute .cc-project:hover .preview-open,html[data-theme=night] #cc-cute .cc-project:focus-visible .preview-open{opacity:1;transform:translate(-50%,0)}
+html[data-theme=night] #cc-cute .cc-project .cc-small{display:block;padding-inline:7px;font:8px/1.6 'Space Mono',monospace;color:#8bc1c4;letter-spacing:1px}
+html[data-theme=night] #cc-cute .cc-project h3{font-size:25px;font-weight:500;letter-spacing:-.7px;margin:11px 7px 10px}
+html[data-theme=night] #cc-cute .cc-project p{font-size:12px;color:#afc8d0;line-height:1.8;margin-inline:7px;max-width:43ch}
+html[data-theme=night] #cc-cute .project-caption{font-size:11px;color:#84a7b4;margin-top:25px;line-height:1.9}
+html[data-theme=night] #cc-cute .section-head h2{font-family:'Instrument Serif',Georgia,serif;font-size:56px;line-height:1.05;font-weight:400;letter-spacing:-1.2px;color:#f6f1e7}
+html[data-theme=night] #cc-cute .about-card,html[data-theme=night] #cc-cute .timeline-item,html[data-theme=night] #cc-cute .skill-card,html[data-theme=night] #cc-cute .cert,html[data-theme=night] #cc-cute .edu-card{background:linear-gradient(145deg,#153342,#102b3a);border-color:#395e708c;box-shadow:none;border-radius:16px}
+html[data-theme=night] #cc-cute .about-label{background:linear-gradient(145deg,#25515c,#193e50);border:1px solid #5b89965c}
+html[data-theme=night] #cc-cute .about-label h3{font-family:'Instrument Serif',Georgia,serif;font-size:37px;font-weight:400;line-height:1.2;color:#d3efeb}
+html[data-theme=night] #cc-cute .contact-panel{background:radial-gradient(ellipse at 10% 0,#2f697552,transparent 75%),#113141;border-color:#4b7a8d;box-shadow:0 15px 50px #0002}
+html[data-theme=night] #cc-cute .contact-panel h2{font-family:'Instrument Serif',Georgia,serif;font-size:65px;font-weight:400;line-height:1.03;letter-spacing:-1px;color:#f6f1e7}
+html[data-theme=night] #cc-cute .case-study{border-color:#456d7f;background:linear-gradient(145deg,#173c4a,#102b3a)}
+html[data-theme=night] #cc-cute .case-study h3{font-family:'Instrument Serif',Georgia,serif;font-size:48px;line-height:1.05;font-weight:400;color:#f6f1e7}
+html[data-theme=night] #cc-cute #projects-dialog{background:#0b2432;animation:ocean-window-in .25s ease-out}
+html[data-theme=night] #cc-cute #projects-dialog .cc-browser{box-shadow:none}
+html[data-theme=night] #cc-cute #projects-dialog .cc-projects{grid-template-columns:repeat(3,minmax(0,1fr));gap:23px}
+html[data-theme=night] #cc-cute #projects-dialog .cc-project{min-height:0}
+html[data-theme=night] #cc-cute #projects-dialog .cc-project-area{padding:30px 35px}
+html[data-theme=night] #cc-cute #projects-dialog .cc-project h3{font-size:22px}
+html[data-theme=night] #cc-cute #projects-dialog .project-visual{margin-bottom:18px}
+@keyframes ocean-float{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes ocean-window-in{from{opacity:.5;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+@media(max-width:1000px){html[data-theme=night] #cc-cute .cc-club-sticker.left{left:0;top:115px}html[data-theme=night] #cc-cute .cc-club-sticker.right{right:0;top:80px}html[data-theme=night] #cc-cute .cc-club h1{font-size:58px}html[data-theme=night] #cc-cute .cc-club .cc-hero{padding-top:65px;min-height:600px}html[data-theme=night] #cc-cute #projects-dialog .cc-projects{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){html[data-theme=night] #cc-cute .cc-club .cc-hero{padding:126px 0 90px;min-height:650px}html[data-theme=night] #cc-cute .cc-club h1{font-size:42px;letter-spacing:-2px;margin-top:27px}html[data-theme=night] #cc-cute .cc-club .cc-name{font-size:1.15em;letter-spacing:-1.4px}html[data-theme=night] #cc-cute .cc-club .cc-intro{font-size:13px}html[data-theme=night] #cc-cute .cc-club-sticker.left{top:17px;width:77px;height:75px;font-size:16px}html[data-theme=night] #cc-cute .cc-club-sticker.right{top:25px;width:76px;height:76px;font-size:16px}html[data-theme=night] #cc-cute .cc-club-sticker.lower{bottom:17px;font-size:15px}html[data-theme=night] #cc-cute .cc-intro-tag{font-size:21px}html[data-theme=night] #cc-cute .cc-club .cc-actions{gap:20px}html[data-theme=night] #cc-cute .cc-club .cc-button{padding:14px 21px}html[data-theme=night] #cc-cute .cc-divider{font-size:8px;line-height:1.8;letter-spacing:.3px}html[data-theme=night] #cc-cute .site-projects{padding-top:32px}html[data-theme=night] #cc-cute .cc-club .cc-project-area{padding:24px 17px}html[data-theme=night] #cc-cute .cc-projects,html[data-theme=night] #cc-cute #projects-dialog .cc-projects{grid-template-columns:1fr;gap:20px}html[data-theme=night] #cc-cute .cc-section-heading h2{font-size:44px}html[data-theme=night] #cc-cute .cc-club .cc-project:nth-child(n){padding:13px 13px 23px}html[data-theme=night] #cc-cute #projects-dialog .cc-project-area{padding:24px 18px}html[data-theme=night] #cc-cute .section-head h2{font-size:44px}html[data-theme=night] #cc-cute .contact-panel h2{font-size:50px}html[data-theme=night] #cc-cute .case-study h3{font-size:37px}}
+@media(prefers-reduced-motion:reduce){html[data-theme=night] #cc-cute *,html[data-theme=night] #cc-cute *:before,html[data-theme=night] #cc-cute *:after{animation:none!important;transition:none!important}}
+html[data-theme=night] #cc-cute .cc-club .cc-project:nth-child(n){display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start}
+html[data-theme=night] #cc-cute .project-visual{flex:none}
+html[data-theme=night] #cc-cute .project-visual img{position:absolute;top:29px;left:0;height:calc(100% - 29px)}
+html[data-theme=night] #cc-cute .cc-hero:before{width:850px;height:590px;top:47%;border-color:#75ded51a;box-shadow:none;transform:translate(-50%,-50%) rotate(-15deg)}
+html[data-theme=night] #cc-cute .cc-hero:after{content:'';position:absolute;width:920px;height:490px;left:50%;top:48%;border:1px solid #75ded50d;border-radius:50%;transform:translate(-50%,-50%) rotate(15deg);pointer-events:none;z-index:-1}
+@media(max-width:600px){html[data-theme=night] #cc-cute .cc-club .cc-name{font-size:.96em;letter-spacing:-1.3px}html[data-theme=night] #cc-cute .cc-hero:before{width:490px;height:630px}html[data-theme=night] #cc-cute .cc-hero:after{width:530px;height:540px}}

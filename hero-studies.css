@@ -1,0 +1,36 @@
+#cc-cute .hero-atmosphere{display:none}
+html[data-theme=night][data-hero] #cc-cute .cc-hero:before,html[data-theme=night][data-hero] #cc-cute .cc-hero:after{display:none}
+html[data-theme=night][data-hero] #cc-cute .hero-atmosphere{display:block;position:absolute;inset:-80px -160px -20px;pointer-events:none;overflow:hidden;z-index:-1;isolation:isolate}
+html[data-theme=night][data-hero] #cc-cute .hero-art{position:absolute;inset:-40px -60px;background-position:center;background-size:cover;background-repeat:no-repeat;animation:current-drift 16s ease-in-out infinite alternate}
+html[data-theme=night][data-hero] #cc-cute .hero-light{position:absolute;inset:0;background:radial-gradient(ellipse 32% 45% at 50% 46%,#081e2ad9,transparent 95%)}
+html[data-theme=night][data-hero=currents] #cc-cute .hero-art{background-image:url('assets/hero-studies/currents.svg');opacity:.9}
+html[data-theme=night][data-hero=currents] #cc-cute .hero-atmosphere{background:radial-gradient(ellipse at 15% 75%,#177d8226,transparent 40%),radial-gradient(ellipse at 92% 25%,#2a88aa26,transparent 45%)}
+html[data-theme=night][data-hero=caustics] #cc-cute .hero-art{background-image:url('assets/hero-studies/caustics.svg');opacity:1;animation:water-drift 13s ease-in-out infinite alternate;mix-blend-mode:screen}
+html[data-theme=night][data-hero=caustics] #cc-cute .hero-atmosphere{background:radial-gradient(ellipse at 50% 0,#286d8480,transparent 68%),linear-gradient(120deg,#061c28,#10344680 50%,#061c28)}
+html[data-theme=night][data-hero=caustics] #cc-cute .hero-light{background:radial-gradient(ellipse 39% 52% at 50% 50%,#081e2ae8,transparent 100%),linear-gradient(0deg,#081e2a,transparent 20%,transparent 80%,#081e2a55)}
+html[data-theme=night][data-hero=ribbon] #cc-cute .hero-art{background-image:url('assets/hero-studies/ribbon.svg');opacity:.87;animation:ribbon-drift 14s ease-in-out infinite alternate}
+html[data-theme=night][data-hero=ribbon] #cc-cute .hero-atmosphere{background:radial-gradient(ellipse at 85% 10%,#41789c26,transparent 55%),radial-gradient(ellipse at 5% 88%,#3ca2a519,transparent 50%)}
+html[data-theme=night][data-hero=ribbon] #cc-cute .hero-light{background:radial-gradient(ellipse 36% 45% at 50% 45%,#081e2ad4,transparent 100%)}
+#cc-cute .hero-study-picker{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:100;background:#102b3aef;border:1px solid #6b9eb580;box-shadow:0 10px 40px #0005;border-radius:17px;padding:10px 12px;backdrop-filter:blur(18px);color:#e7f3f4;font-family:'DM Sans',sans-serif}
+#cc-cute .hero-study-label{display:block;text-align:center;font:8px/1.5 'Space Mono',monospace;letter-spacing:2px;color:#8cafbd;margin-bottom:8px}
+#cc-cute .hero-study-picker>div{display:flex;gap:6px}
+#cc-cute .hero-study-picker button{display:flex;align-items:center;gap:8px;background:transparent;color:#adc6d1;border:1px solid transparent;border-radius:10px;padding:10px 15px;white-space:nowrap;font-size:11px}
+#cc-cute .hero-study-picker button>span{font:9px 'Space Mono',monospace;opacity:.65}
+#cc-cute .hero-study-picker button[aria-pressed=true]{background:#254d5c;border-color:#73b6bc;color:#e5fcf7}
+#cc-cute .hero-study-picker button:hover{background:#234555}
+html[data-theme=paper] #cc-cute .hero-study-picker{display:none}
+@keyframes current-drift{from{transform:translate(-12px,8px) scale(1.02)}to{transform:translate(12px,-10px) scale(1.05)}}
+@keyframes water-drift{from{transform:translate(-10px,-14px) scale(1.02);filter:brightness(.85)}to{transform:translate(10px,14px) scale(1.07);filter:brightness(1.25)}}
+@keyframes ribbon-drift{from{transform:translateY(-10px) rotate(-2deg) scale(1.02)}to{transform:translateY(14px) rotate(2deg) scale(1.05)}}
+@media(max-width:600px){html[data-theme=night][data-hero] #cc-cute .hero-atmosphere{inset:-20px -200px}html[data-theme=night][data-hero] #cc-cute .hero-light{background:radial-gradient(ellipse 35% 47% at 50% 50%,#081e2ae8,transparent 100%)}#cc-cute .hero-study-picker{width:calc(100% - 24px);bottom:12px;padding:9px 6px}#cc-cute .hero-study-picker>div{gap:3px;justify-content:center}#cc-cute .hero-study-picker button{padding:9px 7px;font-size:10px;gap:4px}#cc-cute .hero-study-label{font-size:7px}}
+@media(prefers-reduced-motion:reduce){html[data-theme=night][data-hero] #cc-cute .hero-art{animation:none!important}}
+html[data-theme=night][data-hero] #cc-cute .hero-atmosphere{top:0;bottom:0}
+html[data-theme=night][data-hero] #cc-cute .cc-nav{position:relative;z-index:5}
+/* Chosen background: direct cursor motion, with no automatic drift or easing. */
+html[data-theme=night][data-hero=caustics] #cc-cute .hero-art{animation:none!important;transition:none!important;transform:translate3d(var(--water-x,0px),var(--water-y,0px),0) rotate(var(--water-turn,0deg)) scale(1.08);filter:brightness(1.12);will-change:transform}
+html[data-theme=night][data-hero=caustics] #cc-cute .hero-light{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){html[data-theme=night][data-hero=caustics] #cc-cute .hero-art{transform:scale(1.08);will-change:auto}}
+/* The ribbon follows the cursor directly and holds its position at rest. */
+html[data-theme=night][data-hero=ribbon] #cc-cute .hero-art{animation:none!important;transition:none!important;transform:translate3d(var(--water-x,0px),var(--water-y,0px),0) rotate(var(--water-turn,0deg)) scale(1.08);will-change:transform}
+html[data-theme=night] #cc-cute .cc-divider>span:last-child{display:none}
+@media(prefers-reduced-motion:reduce){html[data-theme=night][data-hero=ribbon] #cc-cute .hero-art{transform:scale(1.08);will-change:auto}}
