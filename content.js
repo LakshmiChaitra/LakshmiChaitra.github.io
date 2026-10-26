@@ -13,12 +13,12 @@ const EXPERIENCE=[
 {role:"Data Analyst Intern",org:"Seaweedz Energy Private Limited",when:"Jul 2026 – Present",text:"Working with SQL and Python on data analysis."}
 ];
 const SKILLS=[
-{group:"Languages",items:["Python","JavaScript","SQL","HTML/CSS","TypeScript","Java","Dart","R","C","Ruby"]},
-{group:"AI & machine learning",items:["NLP","LLMs","Generative AI","Deep Learning","Computer Vision","Prompt Engineering","Transformers","RAG","BiLSTM / Seq Models","Speech Recognition (Whisper)","Model Evaluation"]},
-{group:"Frameworks & tools",items:["Flask","Streamlit","Scikit-learn","XGBoost","Pandas","NumPy","Matplotlib","OpenAI GPT","IBM Watson","AWS","Azure ML","PyTorch","FAISS","SQLite","Stim","Claude API","Three.js","PDF.js","Transformers.js","ONNX Runtime"]},
-{group:"Data science",items:["Collaborative Filtering","K-Means","TF-IDF","Cosine Similarity","Predictive Modeling","Statistical Analysis","Recommendation Systems","Information Retrieval (BM25)","Document Chunking"]},
-{group:"Web & app development",items:["Responsive Design","React.js","Node.js","Browser ML Inference","Next.js","Tailwind CSS","REST APIs","FastAPI","Flutter","GitHub Pages","Vercel","Render","IndexedDB","Web Workers","Web Audio API","WebAssembly"]},
-{group:"Core CS & tools",items:["Data Structures and Algorithms","DBMS","Operating Systems","Linux","Git","GitHub","Docker (basics)"]},
+{group:"Languages",items:["Python","TypeScript","Java","Dart","R","C"]},
+{group:"AI & machine learning",items:["NLP","LLMs","Generative AI","Deep Learning","Prompt Engineering","Transformers","RAG","BiLSTM / Seq Models"]},
+{group:"Frameworks & tools",items:["JavaScript","SQL","HTML/CSS","Ruby","Flask","Streamlit","Scikit-learn","XGBoost","Pandas","NumPy","Matplotlib","OpenAI GPT","IBM Watson","AWS","Azure ML","PyTorch","FAISS","SQLite","Stim","Claude API","Three.js","PDF.js","Transformers.js","ONNX Runtime"]},
+{group:"Data science",items:["K-Means","TF-IDF","Predictive Modeling","Statistical Analysis","Recommendation Systems","Information Retrieval (BM25)","Document Chunking"]},
+{group:"Web & app development",items:["Responsive Design","React.js","Node.js","Browser ML Inference","Next.js","REST APIs","FastAPI","Flutter","GitHub Pages","Vercel","Render","Web Workers","Web Audio API","WebAssembly"]},
+{group:"Core CS & tools",items:["Data Structures and Algorithms","DBMS","Operating Systems","Git","GitHub","Docker (basics)"]},
 {group:"Creative & content",wide:true,items:["UI design","Figma","Canva","Google Flow","Veo","AI video generation"]}
 ];
 const TRAINING=[
