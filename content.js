@@ -15,7 +15,7 @@ const EXPERIENCE=[
 const SKILLS=[
 {group:"Languages",items:["Python","TypeScript","Java","Dart","R","C"]},
 {group:"AI & machine learning",items:["NLP","LLMs","Generative AI","Deep Learning","Prompt Engineering","Transformers","RAG","BiLSTM / Seq Models"]},
-{group:"Frameworks & tools",items:["JavaScript","SQL","HTML/CSS","Ruby","Flask","Streamlit","Scikit-learn","XGBoost","Pandas","NumPy","Matplotlib","OpenAI GPT","IBM Watson","AWS","Azure ML","PyTorch","FAISS","SQLite","Stim","Claude API","Three.js","PDF.js","Transformers.js","ONNX Runtime"]},
+{group:"Frameworks & tools",items:["JavaScript","SQL","HTML/CSS","Ruby","Flask","Streamlit","Scikit-learn","XGBoost","Pandas","NumPy","Matplotlib","OpenAI GPT","IBM Watson","AWS","Azure ML","PyTorch","FAISS","SQLite","Stim","Claude API","Three.js","PDF.js","Transformers.js"]},
 {group:"Data science",items:["K-Means","TF-IDF","Predictive Modeling","Statistical Analysis","Recommendation Systems","Information Retrieval (BM25)","Document Chunking"]},
 {group:"Web & app development",items:["Responsive Design","React.js","Node.js","Browser ML Inference","Next.js","REST APIs","FastAPI","Flutter","GitHub Pages","Vercel","Render","Web Workers","Web Audio API","WebAssembly"]},
 {group:"Core CS & tools",items:["Data Structures and Algorithms","DBMS","Operating Systems","Git","GitHub","Docker (basics)"]},
