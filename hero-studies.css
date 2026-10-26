@@ -34,3 +34,15 @@ html[data-theme=night][data-hero=caustics] #cc-cute .hero-light{animation:none!i
 html[data-theme=night][data-hero=ribbon] #cc-cute .hero-art{animation:none!important;transition:none!important;transform:translate3d(var(--water-x,0px),var(--water-y,0px),0) rotate(var(--water-turn,0deg)) scale(1.08);will-change:transform}
 html[data-theme=night] #cc-cute .cc-divider>span:last-child{display:none}
 @media(prefers-reduced-motion:reduce){html[data-theme=night][data-hero=ribbon] #cc-cute .hero-art{transform:scale(1.08);will-change:auto}}
+/* A single ribbon continues behind every section of the professional portfolio. */
+#cc-cute .site-ocean-wave{display:none}
+html[data-theme=night][data-hero=ribbon] #cc-cute .site-ocean-wave{display:block;position:absolute;inset:0;z-index:0;pointer-events:none;transform:translate3d(var(--water-x,0px),var(--water-y,0px),0);transition:none;overflow:hidden}
+html[data-theme=night][data-hero=ribbon] #cc-cute .site-ocean-wave svg{display:block;max-width:none}
+html[data-theme=night][data-hero=ribbon] #cc-cute .cc-page>main,html[data-theme=night][data-hero=ribbon] #cc-cute .cc-page>.cc-footer{position:relative;z-index:1}
+html[data-theme=night][data-hero=ribbon] #cc-cute .hero-art{background-image:none}
+html[data-theme=night][data-hero=ribbon] #cc-cute .hero-atmosphere{background:transparent;overflow:visible}
+html[data-theme=night][data-hero=ribbon] #cc-cute .hero-light{background:radial-gradient(ellipse at center,#081e2a99,transparent 70%)}
+html[data-theme=night][data-hero=ribbon] #cc-cute .cc-browser{background:#0e2836ed}
+html[data-theme=night][data-hero=ribbon] #cc-cute .section-head{position:relative}
+@media(max-width:600px){html[data-theme=night][data-hero=ribbon] #cc-cute .site-ocean-wave{opacity:.7}}
+@media(prefers-reduced-motion:reduce){html[data-theme=night][data-hero=ribbon] #cc-cute .site-ocean-wave{transform:none}}
