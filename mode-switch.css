@@ -1,0 +1,14 @@
+/* Always-visible sticker and action make both portfolio modes discoverable. */
+#cc-cute .cc-nav .mode-switch{display:flex;flex-direction:column;align-items:center;gap:10px;width:186px;flex-shrink:0;padding-block:15px}
+#cc-cute .cc-nav .mode-prompt{position:relative;background:#fae0e7;color:#60435c;border:1px solid #d4afc9;border-radius:8px 12px 7px 11px;padding:7px 12px;font:600 20px/1.15 Caveat,cursive;white-space:nowrap;transform:rotate(-3deg);box-shadow:2px 3px 0 #c7abd33b;cursor:pointer}
+#cc-cute .cc-nav .mode-prompt:before{content:'';position:absolute;width:30px;height:10px;top:-5px;left:calc(50% - 15px);background:#f7e6adc9;transform:rotate(7deg);border:1px solid #e9d3976b;pointer-events:none}
+#cc-cute .cc-nav .mode-switch .cc-theme{min-width:153px;height:40px;padding:9px 19px;background:#71508b;border:1px solid #71508b;color:#fff7ff;font:600 12px/1.3 'DM Sans',sans-serif;box-shadow:2px 3px 0 #d6c2e6;border-radius:22px;transition:transform .2s,box-shadow .2s;margin:0}
+#cc-cute .cc-nav .mode-switch .cc-theme:hover{transform:translateY(-2px);color:#fff7ff;box-shadow:2px 5px 0 #d6c2e6}
+html[data-theme=night] #cc-cute .cc-nav .mode-prompt{background:#264a5e;color:#e0edf5;border-color:#7194a7;box-shadow:2px 3px 0 #08202b70}
+html[data-theme=night] #cc-cute .cc-nav .mode-prompt:before{background:#92c9d6a6;border-color:#a7e0e733}
+html[data-theme=night] #cc-cute .cc-nav .mode-switch .cc-theme{background:#a2ddd5;border-color:#a2ddd5;color:#173a42;box-shadow:2px 3px 0 #426979}
+html[data-theme=night] #cc-cute .cc-nav .mode-switch .cc-theme:hover{color:#173a42;box-shadow:2px 5px 0 #426979}
+@media(max-width:1100px){#cc-cute .cc-nav .mode-switch{margin-left:auto;order:2}#cc-cute .cc-nav nav{order:3;width:100%;justify-content:center}#cc-cute .cc-nav{row-gap:8px}}
+@media(max-width:600px){#cc-cute .cc-nav{column-gap:10px;padding-block:15px}#cc-cute .cc-nav .mode-switch{width:159px;padding-block:7px;gap:9px}#cc-cute .cc-nav .mode-prompt{font-size:18px;padding:6px 8px}#cc-cute .cc-nav .mode-switch .cc-theme{min-width:134px;height:38px;font-size:11px}#cc-cute .cc-nav nav{justify-content:flex-start;gap:6px 17px}#cc-cute .cc-nav .cc-brand{font-size:16px;letter-spacing:-.5px}}
+@media(max-width:360px){#cc-cute .cc-nav .mode-switch{width:144px}#cc-cute .cc-nav .mode-prompt{font-size:16px}#cc-cute .cc-nav .cc-brand{font-size:14px}#cc-cute .cc-nav .mode-switch .cc-theme{min-width:123px}}
+@media(prefers-reduced-motion:reduce){#cc-cute .cc-nav .mode-switch .cc-theme{transition:none}}

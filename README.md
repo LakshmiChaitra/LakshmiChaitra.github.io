@@ -37,3 +37,5 @@ Final default: first visits open Casual pastel mode. Professional uses the wave 
 Sparkles are enabled in both modes (unless the visitor switches them off or requests reduced motion). Professional uses cyan/sea-blue trails and 30-particle click bursts. The sparkle layer follows the project dialog so effects stay visible in focus view.
 
 Professional background now defaults to Glass Layers, with the decorative orb removed. Casual remains the first-visit default. Background comparisons are available only through explicit `?background=aurora&compare=1` previews; normal visitors see no demo controls. Cyan sparkles and cursor-driven background motion remain enabled.
+
+Mode discovery: the pastel theme is labelled Fun. A header sticker reads “Want a professional vibe?” above the Professional button; Professional shows “Want a fun vibe?” above Fun. Both the sticker and button toggle modes. Fun remains the first-visit default and saved preferences still work.
