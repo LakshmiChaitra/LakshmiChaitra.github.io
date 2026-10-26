@@ -1,0 +1,25 @@
+html[data-background] #cc-cute .site-ocean-wave,html[data-background] #cc-cute .hero-atmosphere,html[data-background] #cc-cute .cc-hero:before,html[data-background] #cc-cute .cc-hero:after{display:none!important}
+#cc-cute .background-stage{display:none}
+html[data-theme=night][data-background] #cc-cute .background-stage{display:block;position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;background:#081d2a;isolation:isolate}
+#cc-cute .background-stage>div{position:absolute;inset:-35px;display:none;transform:translate3d(var(--bg-x,0px),var(--bg-y,0px),0)}
+#cc-cute .background-stage>.background-vignette{display:block;inset:0;transform:none;background:radial-gradient(ellipse 42% 43% at center,#081d2ab3,transparent 100%),linear-gradient(0deg,#081d2a80,transparent 25%,transparent 75%,#081d2a40)}
+html[data-background=aurora] #cc-cute .demo-aurora{display:block;background:radial-gradient(ellipse at var(--pointer-x,65%) var(--pointer-y,35%),#3a80902b,transparent 48%)}
+#cc-cute .demo-aurora i{position:absolute;display:block;border-radius:50%;filter:blur(75px);mix-blend-mode:screen;opacity:.65}
+#cc-cute .demo-aurora i:nth-child(1){width:70%;height:100%;left:-30%;top:3%;background:radial-gradient(ellipse,#19bba27d,transparent 68%);transform:rotate(-35deg)}
+#cc-cute .demo-aurora i:nth-child(2){width:75%;height:120%;right:-28%;top:-30%;background:radial-gradient(ellipse,#3c77cc99,transparent 65%);transform:rotate(25deg)}
+#cc-cute .demo-aurora i:nth-child(3){width:65%;height:70%;right:-5%;bottom:-43%;background:radial-gradient(ellipse,#69ced878,transparent 68%)}
+html[data-background=constellation] #cc-cute .demo-constellation{display:block;background:radial-gradient(ellipse at 85% 20%,#19415b66,transparent 60%)}
+#cc-cute .demo-constellation svg{display:block;width:100%;height:100%}
+#cc-cute .demo-constellation line{stroke:#82cde7;stroke-width:.65;opacity:.23}
+#cc-cute .demo-constellation circle{fill:#8ebecb;opacity:.7}
+#cc-cute .demo-constellation circle.bright{fill:#d9fbf8;opacity:1;filter:drop-shadow(0 0 7px #62c7db)}
+#cc-cute .constellation-halo{position:absolute;inset:0;background:radial-gradient(circle 200px at var(--pointer-x,80%) var(--pointer-y,20%),#5ec4dc18,transparent)}
+html[data-background=glass] #cc-cute .demo-glass{display:block;background:radial-gradient(ellipse at 90% 20%,#427b9945,transparent 50%),radial-gradient(ellipse at 5% 95%,#2a849648,transparent 50%)}
+#cc-cute .glass-panel{position:absolute;display:block;border-radius:40px;border:1px solid #b5deed45;background:linear-gradient(140deg,#bce9f529,#5897b00a 50%,#4582a824);box-shadow:inset 1px 1px 0 #d9fcff40,inset -1px -1px 0 #1d526344,0 25px 80px #0003;backdrop-filter:blur(5px)}
+#cc-cute .panel-one{width:31%;height:68%;right:-10%;top:-10%;transform:rotate(28deg)}
+#cc-cute .panel-two{width:36%;height:52%;left:-16%;bottom:-6%;transform:rotate(-25deg)}
+#cc-cute .panel-three{width:29%;height:23%;right:3%;bottom:-10%;transform:rotate(-15deg)}
+
+html[data-background] #cc-cute .cc-page>main,html[data-background] #cc-cute .cc-page>.cc-footer{position:relative;z-index:1}
+@media(max-width:600px){#cc-cute .demo-aurora i{filter:blur(45px)}#cc-cute .panel-one{width:55%;right:-30%;height:55%}#cc-cute .panel-two{width:65%;left:-40%;height:45%}#cc-cute .background-stage>.background-vignette{background:radial-gradient(ellipse at center,#081d2a99,transparent 90%)}}
+@media(prefers-reduced-motion:reduce){#cc-cute .background-stage>div{transform:none!important}}

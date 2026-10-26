@@ -35,3 +35,5 @@ Ocean Studio demo: `ocean.css` adds professional typography, an ocean background
 Final default: first visits open Casual pastel mode. Professional uses the wave ribbon and only moves its background in direct response to cursor movement. The availability sticker reads “open to internships” with no arrow; duplicate availability text is hidden in Professional. `?hero=caustics` remains an optional alternate preview.
 
 Sparkles are enabled in both modes (unless the visitor switches them off or requests reduced motion). Professional uses cyan/sea-blue trails and 30-particle click bursts. The sparkle layer follows the project dialog so effects stay visible in focus view.
+
+Professional background now defaults to Glass Layers, with the decorative orb removed. Casual remains the first-visit default. Background comparisons are available only through explicit `?background=aurora&compare=1` previews; normal visitors see no demo controls. Cyan sparkles and cursor-driven background motion remain enabled.
