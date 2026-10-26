@@ -72,3 +72,6 @@ html[data-theme=night] #cc-cute .project-visual img{position:absolute;top:29px;l
 html[data-theme=night] #cc-cute .cc-hero:before{width:850px;height:590px;top:47%;border-color:#75ded51a;box-shadow:none;transform:translate(-50%,-50%) rotate(-15deg)}
 html[data-theme=night] #cc-cute .cc-hero:after{content:'';position:absolute;width:920px;height:490px;left:50%;top:48%;border:1px solid #75ded50d;border-radius:50%;transform:translate(-50%,-50%) rotate(15deg);pointer-events:none;z-index:-1}
 @media(max-width:600px){html[data-theme=night] #cc-cute .cc-club .cc-name{font-size:.96em;letter-spacing:-1.3px}html[data-theme=night] #cc-cute .cc-hero:before{width:490px;height:630px}html[data-theme=night] #cc-cute .cc-hero:after{width:530px;height:540px}}
+/* Ocean-coloured cursor trails and larger click bursts. */
+html[data-theme=night] #cc-cute .cursor-star{color:#83e8ef;text-shadow:0 0 7px #74ddea,0 0 17px #3fa8d866}
+html[data-theme=night] #cc-cute .cc-spark-toggle{color:#9adfdf}

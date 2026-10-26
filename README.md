@@ -33,3 +33,5 @@ Local demo revision: both modes call the section “My projects.” The window�
 Ocean Studio demo: `ocean.css` adds professional typography, an ocean background, floating stickers and image-led project cards. Five previews are screenshots captured from the owner’s linked live projects; HUPP-LID uses a labelled conceptual research diagram. Casual hides these previews and retains its original layout.
 
 Final default: first visits open Casual pastel mode. Professional uses the wave ribbon and only moves its background in direct response to cursor movement. The availability sticker reads “open to internships” with no arrow; duplicate availability text is hidden in Professional. `?hero=caustics` remains an optional alternate preview.
+
+Sparkles are enabled in both modes (unless the visitor switches them off or requests reduced motion). Professional uses cyan/sea-blue trails and 30-particle click bursts. The sparkle layer follows the project dialog so effects stay visible in focus view.
