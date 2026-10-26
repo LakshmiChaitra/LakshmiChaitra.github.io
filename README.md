@@ -12,7 +12,7 @@ There is no build step. GitHub Pages can publish the repository root directly.
 
 `content.js` preserves the original site’s remaining six projects, two experience entries, seven skill groups, five training programs, eight certificates and two education records. The original resume remains at `Lakshmi_Chaitra_Resume.pdf`. SmartSpend was removed at the owner’s request. No new claims, credential links or dates have been invented. The script playground identifies Unicode writing systems; it is not a language identification model.
 
-Dark is the default theme; visitors can switch to pastel paper and their explicit preference is remembered.
+Pastel is the default for first visits. The mode switch changes the entire portfolio into a professional dark presentation: formal copy, restrained layouts, no decorative sparkles or stickers, and project case studies in place of flower reveals. Explicit mode choices use the versioned `chaitra-portfolio-mode-v2` preference; the former dark-default preference is ignored. `mode-init.js` applies the preference before paint. The pink header star badge has been removed in both modes.
 
 `app.js` renders the sections, opens project flowers, toggles full project notes, and handles theme and sparkle preferences. Escape and the back button return to the project cards. All content remains visible if scroll animation is unavailable. Reduced-motion preferences disable decorative motion and sparkles. Star effects clean up after themselves and are capped at 90 simultaneous animations.
 

@@ -13,10 +13,13 @@ const flowerLines = [
  'Your PDFs, with a little more conversation.',
  'Websites for academies & clinics. A game after dark.'
 ];
-projectGrid.innerHTML = PROJECTS.map((project,index) => `<button type="button" class="cc-project" data-project="${index}" aria-label="Open ${esc(shortNames[index])} project flower"><span class="cc-small">${project.emoji} ${esc(project.label)}</span><h3>${esc(shortNames[index])}</h3><p>${esc(project.kind)}</p></button>`).join('');
+projectGrid.innerHTML = PROJECTS.map((project,index) => `<button type="button" class="cc-project" data-project="${index}" aria-label="Open ${esc(shortNames[index])} project flower"><span class="cc-small"><span class="project-emoji" aria-hidden="true">${project.emoji}</span> ${esc(project.label)}</span><h3>${esc(shortNames[index])}</h3><p>${esc(project.kind)}</p></button>`).join('');
 let lastProjectTrigger = null;
-function showProject(index, trigger) {
+let activeProjectIndex = null;
+function showProject(index, trigger, preservePosition = false) {
+ activeProjectIndex = index;
  lastProjectTrigger = trigger;
+ if(night) { showProfessionalProject(index, preservePosition); return; }
  const project = PROJECTS[index];
  const tones=['mint','lilac','pink'];
  projectFlower.dataset.flowerTone=tones[index%3];
@@ -34,11 +37,11 @@ function showProject(index, trigger) {
   notesToggle.setAttribute('aria-expanded',String(!notes.hidden));
   notesToggle.textContent=notes.hidden?'Read the project notes ✧':'Fold the notes away ↟';
  });
- projectFlower.scrollIntoView({block:'start',behavior:'instant'});
- projectFlower.querySelector('.cc-flower-back').focus({preventScroll:true});
+ if(!preservePosition) { projectFlower.scrollIntoView({block:'start',behavior:'instant'}); projectFlower.querySelector('.cc-flower-back').focus({preventScroll:true}); }
 }
 
 function closeFlower() {
+ activeProjectIndex = null;
  projectFlower.hidden=true;
  projectGrid.hidden=false;
  projectCaption.hidden=false;
@@ -55,19 +58,59 @@ document.querySelector('#trainingGrid').innerHTML=TRAINING.map(c=>`<article clas
 document.querySelector('#certGrid').innerHTML=CERTS.map(c=>`<article class="cert"><b>${esc(c.n)}</b><span class="meta">${esc(c.o)}, ${esc(c.d)}</span>${c.url?`<a href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">Verify credential ↗</a>`:''}</article>`).join('');
 document.querySelector('#educationGrid').innerHTML=EDUCATION.map(e=>`<article class="edu-card"><span class="edu-year">${esc(e.d)}</span><h3>${esc(e.t)}</h3><p>${esc(e.s)}</p></article>`).join('');
 
+function showProfessionalProject(index, preservePosition = false) {
+ const project=PROJECTS[index];
+ projectFlower.innerHTML=`<article class="case-study"><div class="case-study-top"><span>PROJECT ${String(index+1).padStart(2,'0')} / ${esc(project.label)}</span><button class="case-study-back" type="button">← All projects</button></div><h3>${esc(project.title)}</h3><p class="case-study-summary">${esc(project.kind)}</p><div class="case-study-tags">${project.tags.map(tag=>`<span>${esc(tag)}</span>`).join('')}</div><h4>Project overview</h4><ul>${project.points.map(point=>`<li>${esc(point)}</li>`).join('')}</ul><div class="case-study-links">${project.live?`<a href="${esc(project.live)}" target="_blank" rel="noopener noreferrer">${esc(project.liveLabel||'View live project')} ↗</a>`:''}${project.code?`<a href="${esc(project.code)}" target="_blank" rel="noopener noreferrer">View source code ↗</a>`:''}</div></article>`;
+ projectGrid.hidden=true;projectCaption.hidden=true;projectFlower.hidden=false;projectFlower.setAttribute('aria-busy','false');
+ projectFlower.querySelector('.case-study-back').addEventListener('click',closeFlower);
+ if(!preservePosition){projectFlower.scrollIntoView({block:'start',behavior:'instant'});projectFlower.querySelector('.case-study-back').focus({preventScroll:true});}
+}
 const themeToggle = document.querySelector('#theme-toggle');
-let night = true;
-try { night=localStorage.getItem('chaitra-sticker-theme')!=='paper'; } catch {}
+let night = document.documentElement.dataset.theme === 'night';
+let effectsReady = false;
+const modeCopy = [
+ ['.cc-brand','P. Lakshmi Chaitra'],
+ ['.cc-intro-tag','AI / ML · NLP · SOFTWARE ENGINEERING'],
+ ['#hero-title','P. Lakshmi Chaitra.<br><span class="cc-name">AI/ML &amp; software.</span>'],
+ ['.cc-intro','CSE (Applied Mathematics) student building practical machine learning, language technology and software.<br>Open to AI/ML and software engineering internships.'],
+ ['.cc-actions .cc-button','Explore selected work <span>↗</span>'],
+ ['.cc-browser-top span','PORTFOLIO / SELECTED PROJECTS'],
+ ['#projects-title','Selected projects.'],
+ ['.project-caption','Research and engineering projects across language technology, machine learning and web development.'],
+ ['#about .section-kicker','02 / ABOUT'],
+ ['#about h2','Research-minded.<br>Engineering-focused.'],
+ ['#about .section-head > p','Computer science, applied mathematics and a focus on building practical tools.'],
+ ['.about-label h3','AI/ML &amp;<br>software development.'],
+ ['.mini-stats','<span class="mini-stat">Language technology</span><span class="mini-stat">Applied research</span><span class="mini-stat">Software engineering</span>'],
+ ['#script-lab .section-kicker','INTERACTIVE DEMONSTRATION'],
+ ['#script-lab h2','Writing-system detection.'],
+ ['#script-lab .pill','HUPP-LID · Unicode script demonstration'],
+ ['#experience .section-kicker','03 / EXPERIENCE'],
+ ['#skills .section-kicker','04 / TECHNICAL SKILLS'],
+ ['#certifications .section-kicker','05 / TRAINING & CREDENTIALS'],
+ ['#education .section-kicker','06 / EDUCATION'],
+ ['#contact .section-kicker','07 / CONTACT'],
+ ['#contact h2','Let’s build<br>something useful.'],
+ ['#contact .contact-panel > div > p','For internship opportunities, project collaborations or conversations about language technology and applied AI, get in touch.'],
+ ['#contactForm button','Send message <span>↗</span>'],
+ ['.cc-nav nav a[href="#contact"]','Contact ↗'],
+ ['.cc-footer > span','© <span id="year">'+new Date().getFullYear()+'</span> P. Lakshmi Chaitra · AI/ML &amp; Software Developer']
+].map(([selector,professional])=>{const element=document.querySelector(selector);return {element,paper:element.innerHTML,professional};});
 function applyTheme() {
  document.documentElement.dataset.theme=night?'night':'paper';
  document.documentElement.style.colorScheme=night?'dark':'light';
- document.querySelector('meta[name="theme-color"]').content=night?'#2d2330':'#fff3eb';
- themeToggle.textContent=night?'☀':'☾';
+ document.querySelector('meta[name="theme-color"]').content=night?'#0e1522':'#fff3eb';
+ themeToggle.textContent=night?'Pastel ✿':'Professional ↗';
  themeToggle.setAttribute('aria-pressed',String(night));
- themeToggle.setAttribute('aria-label',night?'Switch to pastel paper':'Switch to night palette');
+ themeToggle.setAttribute('aria-label',night?'Switch to pastel mode':'Switch to professional mode');
+ themeToggle.title=night?'Switch to pastel mode':'Switch to professional mode';
+ modeCopy.forEach(copy=>{copy.element.innerHTML=night?copy.professional:copy.paper;});
+ projectGrid.querySelectorAll('[data-project]').forEach(button=>{const index=Number(button.dataset.project);button.setAttribute('aria-label',night?`Read ${shortNames[index]} case study`:`Open ${shortNames[index]} project flower`);});
+ if(activeProjectIndex!==null&&!projectFlower.hidden)showProject(activeProjectIndex,lastProjectTrigger,true);
+ if(effectsReady)renderSparks();
 }
 applyTheme();
-themeToggle.addEventListener('click',()=>{night=!night;applyTheme();try{localStorage.setItem('chaitra-sticker-theme',night?'night':'paper');}catch{}});
+themeToggle.addEventListener('click',()=>{night=!night;applyTheme();try{localStorage.setItem('chaitra-portfolio-mode-v2',night?'professional':'pastel');}catch{}});
 let surpriseIndex=0;
 document.querySelector('.cc-surprise').addEventListener('click',event=>{
  const notes=['certified<br>“what if?” person','brb, making<br>a tiny thing ✿','one more idea.<br>then sleep. ☾','curiosity<br>club ✦'];
@@ -81,7 +124,7 @@ const sparks=new Set();
 let sparkleEnabled=true,lastSpark=0;
 try{sparkleEnabled=localStorage.getItem('chaitra-sticker-sparkles')!=='off';}catch{}
 function clearSparks(){for(const animation of sparks)animation.cancel();sparks.clear();sparkleLayer.replaceChildren();}
-function renderSparks(){const on=sparkleEnabled&&!reduced.matches;sparkleToggle.textContent=`✦ Sparkles ${on?'on':'off'}`;sparkleToggle.setAttribute('aria-pressed',String(on));sparkleToggle.disabled=reduced.matches;if(!on)clearSparks();}
+function renderSparks(){const on=sparkleEnabled&&!reduced.matches&&!night;sparkleToggle.textContent=`✦ Sparkles ${on?'on':'off'}`;sparkleToggle.setAttribute('aria-pressed',String(on));sparkleToggle.disabled=reduced.matches;if(!on)clearSparks();}
 function star(x,y,burst=false){
  if(sparks.size>=90)return;
  const el=document.createElement('span');el.className='cursor-star';el.textContent=Math.random()>.5?'✦':'✳';el.style.left=x+'px';el.style.top=y+'px';el.style.fontSize=(burst?10+Math.random()*12:13+Math.random()*5)+'px';sparkleLayer.append(el);
@@ -89,11 +132,12 @@ function star(x,y,burst=false){
  const animation=el.animate([{transform:'translate(-50%,-50%) scale(.3)',opacity:0},{offset:.15,transform:'translate(-50%,-50%) scale(1)',opacity:1},{transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy}px)) scale(.1) rotate(65deg)`,opacity:0}],{duration:700,easing:'ease-out'});
  sparks.add(animation);const cleanup=()=>{el.remove();sparks.delete(animation);};animation.onfinish=cleanup;animation.oncancel=cleanup;
 }
-document.addEventListener('pointermove',event=>{if(!sparkleEnabled||reduced.matches||!fine.matches||event.pointerType!=='mouse')return;const t=performance.now();if(t-lastSpark<110)return;lastSpark=t;star(event.clientX,event.clientY);},{passive:true});
-document.addEventListener('pointerdown',event=>{if(!sparkleEnabled||reduced.matches||event.button!==0||event.target.closest('#sparkle-toggle,[data-project],.cc-pick,.flower-controls'))return;for(let i=0;i<14;i++)star(event.clientX,event.clientY,true);},{passive:true});
+document.addEventListener('pointermove',event=>{if(night||!sparkleEnabled||reduced.matches||!fine.matches||event.pointerType!=='mouse')return;const t=performance.now();if(t-lastSpark<110)return;lastSpark=t;star(event.clientX,event.clientY);},{passive:true});
+document.addEventListener('pointerdown',event=>{if(night||!sparkleEnabled||reduced.matches||event.button!==0||event.target.closest('#sparkle-toggle,[data-project],.cc-pick,.flower-controls'))return;for(let i=0;i<14;i++)star(event.clientX,event.clientY,true);},{passive:true});
 sparkleToggle.addEventListener('click',()=>{sparkleEnabled=!sparkleEnabled;renderSparks();try{localStorage.setItem('chaitra-sticker-sparkles',sparkleEnabled?'on':'off');}catch{}});
 reduced.addEventListener('change',()=>{renderSparks();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)clearSparks();});
+effectsReady=true;
 renderSparks();
 document.querySelector('#year').textContent=new Date().getFullYear();
 // Scroll reveals enhance otherwise visible content.
